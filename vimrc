@@ -185,7 +185,7 @@ nnoremap <leader>s :set spell!<CR>
 set pastetoggle=<F4>
 
 " Map BACKSPACE to disable search highlighting
-nnoremap <silent><C-L> :noh<CR>
+nnoremap <silent><C-L> :nohlsearch<CR>
 
 " Force to learn vim!
 "noremap <left> <nop>
@@ -210,7 +210,7 @@ nnoremap <C-right> :bnext<CR>
 nnoremap <C-left> :bprev<CR>
 
 " Short cut to edit vimrc
-nnoremap <F3> :e ~/.vimrc<CR>
+nnoremap <F3> :e ~/.vim/vimrc<CR>
 
 " Use these abbreviations to prevent annoying typos in vim console.
 cnoreabbrev W w
