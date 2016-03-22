@@ -13,9 +13,6 @@ syntax on
 " Minimal number of screen lines to keep above and below the cursor.
 set scrolloff=1
 
-" Enhanced command-line completion.
-set wildmenu
-
 " Display the cursor position on the last line of the screen or in the status
 " line of a window.
 set ruler
@@ -33,17 +30,6 @@ set number
 " Display fold indicator on the left
 set foldcolumn=1
 
-" Vim with default settings does not allow easy switching between multiple
-" files in the same editor window. The 'hidden' option, which allows you to
-" re-use the same window and switch from an unsaved buffer without saving it
-" first. It also allows you to keep an undo history for multiple files when
-" re-using the same window in this way. Note that using persistent undo also
-" lets you undo in multiple files even in the same window, but is less
-" efficient and is actually designed for keeping undo history after closing
-" Vim entirely. Vim will complain if you try to quit without saving, and
-" swap files will keep you safe if your computer crashes.
-set hidden
-
 " Always display the status line, even if only one window is displayed
 set laststatus=2
 
@@ -60,18 +46,15 @@ set noerrorbells
 set novisualbell
 set t_vb=
 
-" Quickly time out on keycodes, but never time out on mappings
-set notimeout ttimeout ttimeoutlen=200
-
 " Instead of failing a command because of unsaved changes, instead raise a
 " dialogue asking if you wish to save changed files.
 set confirm
 
-" Do not show extra information about the currently selected 
+" Do not show extra information about the currently selected
 " completion in the preview window.
 set completeopt=longest,menu
 
-" When on, splitting a window will put the new window right of the 
+" When on, splitting a window will put the new window right of the
 " current one.
 set splitright
 
@@ -83,7 +66,7 @@ set splitright
 " Highlight searches
 set hlsearch
 
-" While typing a search command, show where the pattern, as it was typed 
+" While typing a search command, show where the pattern, as it was typed
 " so far, matches.
 set incsearch
 
@@ -104,19 +87,36 @@ set gdefault
 " have made, as well as sanely reset options when re-sourcing .vimrc
 set nocompatible
 
-" When on, :autocmd, shell and write commands are not allowed in .vimrc 
-" and .exrc in the current directory and map commands are displayed.
-set secure
+" Attempt to determine the type of a file based on its name and possibly its
+" contents. Use this to allow intelligent auto-indenting for each filetype,
+" and for plugins that are filetype specific.
+filetype indent plugin on
+
+" Vim with default settings does not allow easy switching between multiple
+" files in the same editor window. The 'hidden' option, which allows you to
+" re-use the same window and switch from an unsaved buffer without saving it
+" first. It also allows you to keep an undo history for multiple files when
+" re-using the same window in this way. Note that using persistent undo also
+" lets you undo in multiple files even in the same window, but is less
+" efficient and is actually designed for keeping undo history after closing
+" Vim entirely. Vim will complain if you try to quit without saving, and
+" swap files will keep you safe if your computer crashes.
+set hidden
+
+" Quickly time out on keycodes, but never time out on mappings
+set notimeout ttimeout ttimeoutlen=200
+
+" Enhanced command-line completion.
+set wildmenu
 
 " Enables the reading of .vimrc, .exrc and .gvimrc in the current directory.
 " If you switch this option on you should also consider setting the 'secure'
 " option.
 set exrc
 
-" Attempt to determine the type of a file based on its name and possibly its
-" contents. Use this to allow intelligent auto-indenting for each filetype,
-" and for plugins that are filetype specific.
-filetype indent plugin on
+" When on, :autocmd, shell and write commands are not allowed in .vimrc
+" and .exrc in the current directory and map commands are displayed.
+set secure
 
 " Modelines have historically been a source of security vulnerabilities. As
 " such, it may be a good idea to disable them and use the securemodelines
@@ -126,11 +126,7 @@ set nomodeline
 " Allow backspacing over autoindent, line breaks and start of insert action
 set backspace=indent,eol,start
 
-" When opening a new line and no filetype-specific indenting is enabled, keep
-" the same indent as the line you're currently on. Useful for READMEs, etc.
-set autoindent
-
-" This option specifies how keyword completion |ins-completion| works when 
+" This option specifies how keyword completion ins-completion works when
 " CTRL-P or CTRL-N are used.
 set complete=.,w,b,u,t,i,d,t
 
@@ -145,11 +141,15 @@ set complete=.,w,b,u,t,i,d,t
 "set softtabstop=4
 "set expandtab
 
-" Indentation settings for using hard tabs. Display tabs as four 
+" Indentation settings for using hard tabs. Display tabs as four
 " characters wide.
 set tabstop=4
 set shiftwidth=4
 set noexpandtab
+
+" When opening a new line and no filetype-specific indenting is enabled, keep
+" the same indent as the line you're currently on. Useful for READMEs, etc.
+set autoindent
 
 " Switch case style for C
 set cinoptions=:0,g0
@@ -158,13 +158,14 @@ set cinoptions=:0,g0
 let g:pyindent_open_paren='&sw'
 let g:pyindent_continue='&sw'
 
+
 "------------------------------------------------------------
 " Mappings
 "
 
 " Map <leader> to space
 nnoremap <Space> <nop>
-let mapleader=" "
+let mapleader=' '
 
 " Map Y to act like D and C, i.e. to yank until EOL, rather than act as yy,
 " which is the default
@@ -202,6 +203,31 @@ nnoremap <F3> :e ~/.vim/vimrc<CR>
 cnoreabbrev W w
 cnoreabbrev Q q
 
+"------------------------------------------------------------
+" Functions
+"
+
+" Save current view settings on a per-window, per-buffer basis.
+function! AutoSaveWinView()
+    if !exists("w:SavedBufView")
+        let w:SavedBufView = {}
+    endif
+    let w:SavedBufView[bufnr("%")] = winsaveview()
+endfunction
+
+" Restore current view settings.
+function! AutoRestoreWinView()
+    let buf = bufnr("%")
+    if exists("w:SavedBufView") && has_key(w:SavedBufView, buf)
+        let v = winsaveview()
+        let atStartOfFile = v.lnum == 1 && v.col == 0
+        if atStartOfFile && !&diff
+            call winrestview(w:SavedBufView[buf])
+        endif
+        unlet w:SavedBufView[buf]
+    endif
+endfunction
+
 
 "------------------------------------------------------------
 " Autocommands
@@ -209,15 +235,21 @@ cnoreabbrev Q q
 
 autocmd Filetype python setlocal tabstop=4 shiftwidth=4 expandtab
 autocmd Filetype html*  setlocal tabstop=2 shiftwidth=2 expandtab
-autocmd Filetype text   setlocal spell     textwidth=79 
+autocmd Filetype text   setlocal spell     textwidth=79
 autocmd FileType help   setlocal nospell
 
 autocmd BufNewFile,BufReadPost *.md setlocal filetype=markdown
 autocmd BufNewFile,BufReadPost *.h  setlocal filetype=c
 
+" When switching buffers, preserve window view.
+if v:version >= 700
+    autocmd BufLeave * call AutoSaveWinView()
+    autocmd BufEnter * call AutoRestoreWinView()
+endif
+
 
 "------------------------------------------------------------
-" User defined
+" Plugins Config
 
 " Color scheme
 " colorscheme jellybeans
@@ -297,32 +329,4 @@ function! LoadCscope()
 endfunction
 autocmd BufEnter *.c call LoadCscope()
 
-" ftplugin man.vim
-runtime ftplugin/man.vim
-
-" Save current view settings on a per-window, per-buffer basis.
-function! AutoSaveWinView()
-    if !exists("w:SavedBufView")
-        let w:SavedBufView = {}
-    endif
-    let w:SavedBufView[bufnr("%")] = winsaveview()
-endfunction
-
-" Restore current view settings.
-function! AutoRestoreWinView()
-    let buf = bufnr("%")
-    if exists("w:SavedBufView") && has_key(w:SavedBufView, buf)
-        let v = winsaveview()
-        let atStartOfFile = v.lnum == 1 && v.col == 0
-        if atStartOfFile && !&diff
-            call winrestview(w:SavedBufView[buf])
-        endif
-        unlet w:SavedBufView[buf]
-    endif
-endfunction
-
-" When switching buffers, preserve window view.
-if v:version >= 700
-    autocmd BufLeave * call AutoSaveWinView()
-    autocmd BufEnter * call AutoRestoreWinView()
-endif
+runtime! ftplugin/man.vim
