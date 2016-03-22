@@ -330,3 +330,4 @@ endfunction
 autocmd BufEnter *.c call LoadCscope()
 
 runtime! ftplugin/man.vim
+runtime! macros/matchit.vim
