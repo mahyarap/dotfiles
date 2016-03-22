@@ -126,6 +126,10 @@ set nomodeline
 " Allow backspacing over autoindent, line breaks and start of insert action
 set backspace=indent,eol,start
 
+" When on, a <Tab> in front of a line inserts blanks according to shiftwidth.
+" tabstop or softtabstop is used in other places.
+set smarttab
+
 " This option specifies how keyword completion ins-completion works when
 " CTRL-P or CTRL-N are used.
 set complete=.,w,b,u,t,i,d,t
