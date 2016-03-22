@@ -132,7 +132,7 @@ set complete=.,w,b,u,t,i,d,t
 
 
 "------------------------------------------------------------
-" Indentation options
+" Format options
 "
 
 " Indentation settings for using 4 spaces instead of tabs.
@@ -150,6 +150,9 @@ set noexpandtab
 " When opening a new line and no filetype-specific indenting is enabled, keep
 " the same indent as the line you're currently on. Useful for READMEs, etc.
 set autoindent
+
+" Delete comment character when joining commented lines
+set formatoptions+=j
 
 " Switch case style for C
 set cinoptions=:0,g0
