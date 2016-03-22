@@ -226,7 +226,8 @@ autocmd Filetype html*  setlocal tabstop=2 shiftwidth=2 expandtab
 autocmd Filetype text   setlocal spell     textwidth=79 
 autocmd FileType help   setlocal nospell
 
-autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+autocmd BufNewFile,BufReadPost *.md setlocal filetype=markdown
+autocmd BufNewFile,BufReadPost *.h  setlocal filetype=c
 
 
 "------------------------------------------------------------
