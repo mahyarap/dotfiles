@@ -1,6 +1,6 @@
 "
 " A fairly good vimrc
-" By Mahyar Abbas Pour
+" By Mahyar Abbaspour
 "
 
 "----------------------------------------------------------------------------
@@ -33,19 +33,15 @@ set number
 " Display fold indicator on the left
 set foldcolumn=1
 
-" Vim with default settings does not allow easy switching between multiple files
-" in the same editor window. Users can use multiple split windows or multiple
-" tab pages to edit multiple files, but it is still best to enable an option to
-" allow easier switching between files.
-"
-" One such option is the 'hidden' option, which allows you to re-use the same
-" window and switch from an unsaved buffer without saving it first. Also allows
-" you to keep an undo history for multiple files when re-using the same window
-" in this way. Note that using persistent undo also lets you undo in multiple
-" files even in the same window, but is less efficient and is actually designed
-" for keeping undo history after closing Vim entirely. Vim will complain if you
-" try to quit without saving, and swap files will keep you safe if your computer
-" crashes.
+" Vim with default settings does not allow easy switching between multiple
+" files in the same editor window. The 'hidden' option, which allows you to
+" re-use the same window and switch from an unsaved buffer without saving it
+" first. It also allows you to keep an undo history for multiple files when
+" re-using the same window in this way. Note that using persistent undo also
+" lets you undo in multiple files even in the same window, but is less
+" efficient and is actually designed for keeping undo history after closing
+" Vim entirely. Vim will complain if you try to quit without saving, and
+" swap files will keep you safe if your computer crashes.
 set hidden
 
 " Always display the status line, even if only one window is displayed
@@ -170,10 +166,6 @@ let g:pyindent_continue='&sw'
 nnoremap <Space> <nop>
 let mapleader=" "
 
-" Treat long lines as break lines (useful when moving around in them)
-" map j gj
-" map k gk
-
 " Map Y to act like D and C, i.e. to yank until EOL, rather than act as yy,
 " which is the default
 map Y y$
@@ -186,12 +178,6 @@ set pastetoggle=<F4>
 
 " Map BACKSPACE to disable search highlighting
 nnoremap <silent><C-L> :nohlsearch<CR>
-
-" Force to learn vim!
-"noremap <left> <nop>
-"noremap <right> <nop>
-"noremap <up> <nop>
-"noremap <down> <nop>
 
 " Map CTRL-SPACE for autocompletion
 inoremap <C-@> <C-N>
@@ -256,7 +242,6 @@ nnoremap <silent> <leader>tl :TlistOpen<CR>
 
 " NERDTree
 let NERDTreeShowBookmarks = 1
-" let NERDTreeChDirMode = 2
 nnoremap <silent> <F2> :NERDTree<CR>
 
 " NERDCommenter
@@ -276,7 +261,6 @@ let g:syntastic_mode_map={ 'mode': 'active',
                      \ 'active_filetypes': [],
                      \ 'passive_filetypes': [''] }
 let g:syntastic_python_python_exec = '/usr/bin/python3'
-" let g:syntastic_python_checkers = ['pyflakes']
 
 " Bufferline
 let g:bufferline_show_bufnr = 0
