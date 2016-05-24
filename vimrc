@@ -12,7 +12,7 @@ syntax on
 
 " Minimal number of screen lines to keep above and below the cursor.
 set scrolloff=1
-
+" comment <F12. 
 " Display the cursor position on the last line of the screen or in the status
 " line of a window.
 set ruler
