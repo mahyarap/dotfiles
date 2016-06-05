@@ -210,6 +210,10 @@ nnoremap <F3> :e ~/.vim/vimrc<CR>
 cnoreabbrev W w
 cnoreabbrev Q q
 
+" Better command line history
+cnoremap <C-n> <down>
+cnoremap <C-p> <up>
+
 
 "------------------------------------------------------------
 " Functions
