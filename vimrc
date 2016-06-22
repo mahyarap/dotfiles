@@ -273,14 +273,15 @@ autocmd BufEnter *.c call LoadCscope()
 "------------------------------------------------------------
 " Plugins Config
 
-" Color scheme
-" colorscheme jellybeans
-colorscheme molokai
-let g:molokai_original = 1
-let g:rehash256 = 1
-
 " Set terminal colors to 256 (MAX)
 set t_Co=256
+
+" Color scheme
+" colorscheme jellybeans
+let g:molokai_original = 1
+let g:rehash256 = 1
+colorscheme molokai
+
 
 " Omnifunc
 setlocal omnifunc=syntaxcomplete#Complete
@@ -301,9 +302,10 @@ nnoremap <silent> <F2> :NERDTree<CR>
 " NERDCommenter
 imap <C-c> <plug>NERDCommenterInsert
 let NERDSpaceDelims = 1
+let g:NERDAltDelims_python = 1
 let g:NERDCustomDelimiters = {
 	\ 'asm': { 'left': '#' },
-	\ 'dosini': {'left': "#"},
+	\ 'dosini': {'left': '#'},
 \}
 
 " Delimate
