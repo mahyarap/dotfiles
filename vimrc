@@ -118,6 +118,10 @@ set exrc
 " and .exrc in the current directory and map commands are displayed.
 set secure
 
+" When a file has been detected to have been changed outside of Vim and
+" it has not been changed inside of Vim, automatically read it again.
+set autoread
+
 " Modelines have historically been a source of security vulnerabilities. As
 " such, it may be a good idea to disable them and use the securemodelines
 " script, <http://www.vim.org/scripts/script.php?script_id=1876>.
