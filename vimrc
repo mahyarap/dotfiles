@@ -317,10 +317,13 @@ let delimitMate_expand_cr = 1
 au FileType python let b:delimitMate_nesting_quotes = ['"']
 
 " Syn
-let g:syntastic_mode_map={ 'mode': 'active',
-                     \ 'active_filetypes': [],
-                     \ 'passive_filetypes': [''] }
+" let g:syntastic_mode_map={ 'mode': 'active',
+"                      \ 'active_filetypes': [],
+"                      \ 'passive_filetypes': [''] }
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 let g:syntastic_python_python_exec = '/usr/bin/python3'
+let g:syntastic_go_checkers = ['go', 'gofmt']
 
 " Bufferline
 let g:bufferline_show_bufnr = 0
