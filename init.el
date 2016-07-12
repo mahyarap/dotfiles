@@ -33,6 +33,9 @@
 ;; Not working at the moment!
 ;; (setq explicit-shell-file-name "/bin/bash")
 
+;; Python
+(setq-default python-shell-interpreter "python3")
+
 ;; Editing ;;
 
 ;; Go evil!
