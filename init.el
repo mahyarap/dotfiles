@@ -20,6 +20,30 @@
 ;; Use shift + arrow keys to switch windows
 (windmove-default-keybindings)
 
+(setq ibuffer-saved-filter-groups
+	  (quote (("default"
+			   ("term" (mode . term-mode))
+			   ("dired" (mode . dired-mode))
+			   ("planner" (or
+						   (name . "^\\*Calendar\\*$")
+						   (name . "^diary$")
+						   (mode . muse-mode)))
+			   ("emacs" (name . "^\\*"))
+			   ("gnus" (or
+						(mode . message-mode)
+						(mode . bbdb-mode)
+						(mode . mail-mode)
+						(mode . gnus-group-mode)
+						(mode . gnus-summary-mode)
+						(mode . gnus-article-mode)
+						(name . "^\\.bbdb$")
+						(name . "^\\.newsrc-dribble")))))))
+(add-hook 'ibuffer-mode-hook
+		  (lambda ()
+			(ibuffer-switch-to-saved-filter-groups "default")))
+(setq ibuffer-show-empty-filter-groups nil)
+(setq ibuffer-expert t)
+
 (setq-default term-scroll-to-bottom-on-output t)
 ;; Smooth scrolling
 (setq scroll-step 1)
