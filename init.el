@@ -45,6 +45,9 @@
 (setq ibuffer-expert t)
 
 (setq-default term-scroll-to-bottom-on-output t)
+
+(global-auto-revert-mode t)
+
 ;; Smooth scrolling
 (setq scroll-step 1)
 
