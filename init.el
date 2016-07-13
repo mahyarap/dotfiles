@@ -103,6 +103,12 @@
 (add-hook 'text-mode-hook 'flyspell-mode)
 (add-hook 'prog-mode-hook 'flyspell-prog-mode)
 
+(add-hook 'html-mode-hook
+		  (lambda ()
+			;; Default indentation is usually 2 spaces, changing to 4.
+			(setq indent-tabs-mode nil)
+			(set (make-local-variable 'sgml-basic-offset) 2)))
+
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 (add-hook 'ibuffer-mode-hook (lambda () (ibuffer-auto-mode 1)))
 (global-set-key (kbd "C-<SPC>") 'dabbrev-completion)
