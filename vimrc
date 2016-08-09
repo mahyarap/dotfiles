@@ -301,10 +301,6 @@ execute pathogen#infect()
 " Map to open Taglist
 nnoremap <silent> <leader>tl :TlistOpen<CR>
 
-" NERDTree
-let NERDTreeShowBookmarks = 1
-nnoremap <silent> <F2> :NERDTree<CR>
-
 " NERDCommenter
 imap <C-c> <plug>NERDCommenterInsert
 let NERDSpaceDelims = 1
