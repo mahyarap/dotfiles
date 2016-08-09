@@ -329,7 +329,6 @@ let g:bufferline_modified = '*'
 let g:bufferline_rotate = 2
 
 " Ctrlp
-let g:ctrlp_map = '<leader>p'
 
 " YouCompleteMe
 " let g:clang_library_path = "/usr/lib/llvm-3.4/lib"
