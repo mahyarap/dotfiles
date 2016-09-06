@@ -268,8 +268,9 @@ autocmd Filetype markdown  setlocal spell     textwidth=79 tabstop=4 shiftwidth=
 autocmd FileType gitcommit setlocal spell
 autocmd FileType help      setlocal nospell
 
-autocmd BufNewFile,BufReadPost *.md setlocal filetype=markdown
-autocmd BufNewFile,BufReadPost *.h  setlocal filetype=c
+autocmd BufNewFile,BufReadPost *.md        setlocal filetype=markdown
+autocmd BufNewFile,BufReadPost *.h         setlocal filetype=c
+autocmd BufNewFile,BufReadPost Vagrantfile setlocal filetype=ruby
 
 " When switching buffers, preserve window view.
 autocmd BufLeave * call AutoSaveWinView()
