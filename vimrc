@@ -208,7 +208,8 @@ nnoremap <C-right> :bnext<CR>
 nnoremap <C-left> :bprev<CR>
 
 " Short cut to edit vimrc
-nnoremap <F3> :e ~/.vim/vimrc<CR>
+nnoremap <leader>ev :edit $MYVIMRC<CR>
+nnoremap <leader>sv :source $MYVIMRC<CR>
 
 " Use these abbreviations to prevent annoying typos in vim console.
 cnoreabbrev W w
