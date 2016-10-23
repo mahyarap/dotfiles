@@ -224,6 +224,15 @@ cnoremap <C-p> <up>
 " Functions
 "
 
+function! GnuCStyle()
+	setlocal cindent
+	setlocal cinoptions=>4,n-2,{2,^-2,:2,=2,g0,h2,p5,t0,+2,(0,u0,w1,m1
+	setlocal shiftwidth=2
+	setlocal softtabstop=2
+	setlocal textwidth=79
+	setlocal fo-=ro fo+=cql
+endfunction
+
 " Save current view settings on a per-window, per-buffer basis.
 function! AutoSaveWinView()
     if !exists("w:SavedBufView")
