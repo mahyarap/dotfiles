@@ -138,6 +138,12 @@ set smarttab
 " CTRL-P or CTRL-N are used.
 set complete=.,w,b,u,t,i,d,t
 
+" A list of file patterns. A file that matches with one of these patterns is
+" ignored when expanding wildcards, completing file or directory names, and
+" influences the result of expand(), glob() and globpath() unless a flag is
+" passed to disable this.
+set wildignore+=__pycache__
+
 
 "------------------------------------------------------------
 " Format options
@@ -332,6 +338,7 @@ let g:bufferline_modified = '*'
 let g:bufferline_rotate = 2
 
 " Ctrlp
+let g:ctrlp_cmd = 'CtrlP'
 
 " YouCompleteMe
 " let g:clang_library_path = "/usr/lib/llvm-3.4/lib"
@@ -351,3 +358,13 @@ endif
 
 runtime! ftplugin/man.vim
 runtime! macros/matchit.vim
+
+"| ctrlp.vim            https://github.com/ctrlpvim/ctrlp.vim.git
+"| delimitMate          https://github.com/Raimondi/delimitMate.git
+"| syntastic            https://github.com/scrooloose/syntastic.git
+"| vim-bufferline       https://github.com/bling/vim-bufferline.git
+"| vim-commentary       https://github.com/tpope/vim-commentary.git
+"| vim-eunuch           https://github.com/tpope/vim-eunuch.git
+"| vim-licenses         https://github.com/antoyo/vim-licenses.git
+"| vim-obsession        https://github.com/tpope/vim-obsession.git
+"| vim-surround         https://github.com/tpope/vim-surround.git
