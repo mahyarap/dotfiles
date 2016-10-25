@@ -269,24 +269,36 @@ endfunction
 " Autocommands
 "
 
-autocmd Filetype python    setlocal tabstop=4 shiftwidth=4 expandtab
-autocmd Filetype ruby      setlocal tabstop=2 shiftwidth=2 expandtab
-autocmd Filetype html*     setlocal tabstop=2 shiftwidth=2 expandtab
+augroup indentation
+	autocmd!
+	autocmd Filetype python setlocal tabstop=4 shiftwidth=4 expandtab
+	autocmd Filetype ruby   setlocal tabstop=2 shiftwidth=2 expandtab
+	autocmd Filetype html*  setlocal tabstop=2 shiftwidth=2 expandtab
+augroup END
 
-autocmd Filetype text      setlocal spell     textwidth=79
-autocmd Filetype markdown  setlocal spell     textwidth=79 tabstop=4 shiftwidth=4 expandtab
-autocmd FileType gitcommit setlocal spell
-autocmd FileType help      setlocal nospell
+augroup spelling
+	autocmd!
+	autocmd Filetype text      setlocal spell   textwidth=79
+	autocmd Filetype markdown  setlocal spell   textwidth=79 tabstop=4 shiftwidth=4 expandtab
+	autocmd FileType gitcommit setlocal spell
+	autocmd FileType help      setlocal nospell
+augroup END
 
-autocmd BufNewFile,BufReadPost *.md        setlocal filetype=markdown
-autocmd BufNewFile,BufReadPost *.h         setlocal filetype=c
-autocmd BufNewFile,BufReadPost Vagrantfile setlocal filetype=ruby
+augroup filetypes
+	autocmd!
+	autocmd BufNewFile,BufReadPost *.md        setlocal filetype=markdown
+	autocmd BufNewFile,BufReadPost *.h         setlocal filetype=c
+	autocmd BufNewFile,BufReadPost Vagrantfile setlocal filetype=ruby
+augroup END
 
-" When switching buffers, preserve window view.
-autocmd BufLeave * call AutoSaveWinView()
-autocmd BufEnter * call AutoRestoreWinView()
+augroup hooks
+	autocmd!
+	" When switching buffers, preserve window view.
+	autocmd BufLeave * call AutoSaveWinView()
+	autocmd BufEnter * call AutoRestoreWinView()
 
-autocmd BufEnter *.c call LoadCscope()
+	autocmd BufEnter *.c call LoadCscope()
+augroup END
 
 
 "------------------------------------------------------------
@@ -361,3 +373,14 @@ endif
 
 runtime! ftplugin/man.vim
 runtime! macros/matchit.vim
+
+"| ctrlp.vim             https://github.com/ctrlpvim/ctrlp.vim.git
+"| delimitMate           https://github.com/Raimondi/delimitMate.git
+"| rust.vim              https://github.com/rust-lang/rust.vim.git
+"| syntastic             https://github.com/scrooloose/syntastic.git
+"| vim-bbye              https://github.com/moll/vim-bbye.git
+"| vim-bufferline        https://github.com/bling/vim-bufferline.git
+"| vim-commentary        https://github.com/tpope/vim-commentary.git
+"| vim-eunuch            https://github.com/tpope/vim-eunuch.git
+"| vim-obsession         https://github.com/tpope/vim-obsession.git
+"| vim-surround          https://github.com/tpope/vim-surround.git

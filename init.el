@@ -13,7 +13,9 @@
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 
 ;; Remove annoying UIs
-;; (setq inhibit-startup-message t)
+(setq inhibit-splash-screen t)
+(bookmark-bmenu-list)
+(switch-to-buffer "*Bookmark List*")
 
 ;; Since Ubuntu unity shows menu bars in the window decorator,
 ;; there is no need to disable it.
@@ -40,7 +42,7 @@
 (ido-mode)
 
 ;; Use shift + arrow keys to switch windows
-(windmove-default-keybindings)
+(windmove-default-keybindings 'meta)
 
 ;; ibuffer grouping setup
 (setq ibuffer-saved-filter-groups
@@ -80,6 +82,10 @@
 
 ;; Not working at the moment!
 ;; (setq explicit-shell-file-name "/bin/bash")
+(defun my-ansi-term ()
+  (interactive)
+  (ansi-term
+   (or explicit-shell-file-name (getenv "ESHELL") (getenv "SHELL") "/bin/bash")))
 
 ;; Python
 (setq-default python-shell-interpreter "python3")
@@ -90,13 +96,13 @@
 (global-flycheck-mode)
 (setq flycheck-check-syntax-automatically '(mode-enabled save))
 (setq flycheck-python-pycompile-executable "python3")
+(add-hook 'c++-mode-hook
+		  (lambda ()
+			(setq flycheck-gcc-language-standard "c++11")))
 ;; Remove RET and SPC key binding from Evil's motion state map
 
 ;; Enable auto-closing delimiters
 (electric-pair-mode 1)
-
-;; Comment stuff out
-(evil-commentary-mode)
 
 (setq c-default-style '((java-mode . "java")
 						(awk-mode . "awk")
@@ -112,7 +118,6 @@
 
 (add-hook 'html-mode-hook
 		  (lambda ()
-			;; Default indentation is usually 2 spaces, changing to 4.
 			(setq indent-tabs-mode nil)
 			(set (make-local-variable 'sgml-basic-offset) 2)))
 
@@ -137,7 +142,7 @@
 	("c3c0a3702e1d6c0373a0f6a557788dfd49ec9e66e753fb24493579859c8e95ab" default)))
  '(package-selected-packages
    (quote
-	(projectile ess yaml-mode fic-mode flycheck markdown-mode evil-commentary evil go-mode))))
+	(use-package magit evil-leader projectile ess yaml-mode fic-mode flycheck markdown-mode evil-commentary evil go-mode))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -146,19 +151,58 @@
  '(default ((t (:family "DejaVu Sans Mono" :foundry "unknown" :slant normal :weight normal :height 105 :width normal)))))
 
 ;; Go evil!
-;; (require 'evil)
-(evil-mode 1)
+(use-package evil
+  :ensure t
+  :init
+  (setq evil-want-C-u-scroll t
+		evil-want-Y-yank-to-eol t)
 
-(defun my-move-key (keymap-from keymap-to key)
-"Move key binding from one keymap to another, deleting from the old location."
-  (define-key keymap-to key (lookup-key keymap-from key))
-  (define-key keymap-from key nil))
+  (use-package evil-leader
+	:init
+	(global-evil-leader-mode)
+	:config
+	(evil-leader/set-leader "<SPC>")
+	(evil-leader/set-key "s" 'flyspell-buffer))
 
-(my-move-key evil-motion-state-map evil-motion-state-map (kbd "RET"))
-(my-move-key evil-motion-state-map evil-motion-state-map " ")
+  (use-package evil-commentary
+	:init
+	(evil-commentary-mode))
 
-(evil-set-initial-state 'bs-mode 'motion)
-(evil-set-initial-state 'dired-mode 'motion)
-(evil-set-initial-state 'package-menu-mode 'motion)
-(evil-set-initial-state 'term-mode 'emacs)
-(evil-ex-define-cmd "term" 'ansi-term)
+  (evil-mode t)
+  :config
+  (evil-set-initial-state 'bs-mode 'emacs)
+  (evil-add-hjkl-bindings bs-mode-map 'emacs)
+)
+
+;; (setq evil-want-C-u-scroll t
+;; 	  evil-want-Y-yank-to-eol t)
+;; (global-evil-leader-mode)
+;; (evil-leader/set-leader "<SPC>")
+;; (evil-leader/set-key "s" 'flyspell-buffer)
+;; ;; (require 'evil)
+;; (evil-mode t)
+
+;; ;; Comment stuff out
+;; (evil-commentary-mode)
+
+;; ;; (defun my-move-key (keymap-from keymap-to key)
+;; ;; "Move key binding from one keymap to another, deleting from the old location."
+;; ;;   (define-key keymap-to key (lookup-key keymap-from key))
+;; ;;   (define-key keymap-from key nil))
+
+;; ;; (my-move-key evil-motion-state-map evil-motion-state-map (kbd "RET"))
+;; ;; (my-move-key evil-motion-state-map evil-motion-state-map " ")
+
+;; (modify-syntax-entry ?_ "w")
+
+;; (evil-set-initial-state 'bs-mode 'emacs)
+;; (evil-add-hjkl-bindings bs-mode-map 'emacs)
+
+;; (evil-set-initial-state 'dired-mode 'emacs)
+
+;; (evil-set-initial-state 'package-menu-mode 'emacs)
+;; (evil-add-hjkl-bindings package-menu-mode-map 'emacs)
+
+;; (evil-set-initial-state 'term-mode 'emacs)
+;; (evil-ex-define-cmd "term" 'my-ansi-term)
+;; ;;; init.el ends here
