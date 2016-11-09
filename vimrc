@@ -138,6 +138,10 @@ set smarttab
 " CTRL-P or CTRL-N are used.
 set complete=.,w,b,u,t,i,d,t
 
+" Virtual editing means that the cursor can be positioned where there is no
+" actual character.
+set virtualedit+=block
+
 " A list of file patterns. A file that matches with one of these patterns is
 " ignored when expanding wildcards, completing file or directory names, and
 " influences the result of expand(), glob() and globpath() unless a flag is
