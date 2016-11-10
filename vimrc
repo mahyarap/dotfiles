@@ -134,8 +134,8 @@ set backspace=indent,eol,start
 " tabstop or softtabstop is used in other places.
 set smarttab
 
-" This option specifies how keyword completion ins-completion works when
-" CTRL-P or CTRL-N are used.
+" This option specifies how keyword completion works when CTRL-P or CTRL-N are
+" used.
 set complete=.,w,b,u,t,i,d,t
 
 " Virtual editing means that the cursor can be positioned where there is no
@@ -176,7 +176,9 @@ set formatoptions+=j
 set cinoptions=:0,g0
 
 " Python
+" Indent after an open paren
 let g:pyindent_open_paren='&sw'
+" Indent for a continuation line
 let g:pyindent_continue='&sw'
 
 
