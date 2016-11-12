@@ -225,7 +225,10 @@ nnoremap <leader>sv :source $MYVIMRC<CR>
 
 " Use these abbreviations to prevent annoying typos in vim console.
 cnoreabbrev W w
+cnoreabbrev Wq wq
+cnoreabbrev Wa wa
 cnoreabbrev Q q
+cnoreabbrev Qa qa
 
 " Better command line history
 cnoremap <C-n> <down>
