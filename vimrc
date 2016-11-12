@@ -352,7 +352,8 @@ let g:NERDCustomDelimiters = {
 
 " Delimate
 let delimitMate_expand_cr = 1
-au FileType python let b:delimitMate_nesting_quotes = ['"']
+autocmd FileType python let b:delimitMate_nesting_quotes = ['"']
+autocmd FileType scheme let b:delimitMate_quotes = "\""
 
 " Syn
 " let g:syntastic_mode_map={ 'mode': 'active',
