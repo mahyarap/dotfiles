@@ -363,6 +363,7 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_python_python_exec = '/usr/bin/python3'
 let g:syntastic_go_checkers = ['go', 'gofmt']
+let g:syntastic_rust_checkers = ['rustc']
 
 " Bufferline
 let g:bufferline_show_bufnr = 0
