@@ -195,7 +195,7 @@ let mapleader=' '
 map Y y$
 
 " Spell check
-nnoremap <leader>s :set spell!<CR>
+nnoremap <leader>sp :set spell!<CR>
 
 " Use <F4> to toggle between 'paste' and 'nopaste'
 set pastetoggle=<F4>
