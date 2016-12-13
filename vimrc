@@ -339,6 +339,11 @@ execute pathogen#infect()
 " Add tags
 " set tags=./tags;
 
+" Slime
+let g:slime_target = "tmux"
+let g:slime_default_config = {"socket_name": "default", "target_pane": "0"}
+let g:slime_dont_ask_default = 1
+
 " Map to open Taglist
 nnoremap <silent> <leader>tl :TlistOpen<CR>
 
