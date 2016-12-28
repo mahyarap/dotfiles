@@ -58,6 +58,9 @@ set completeopt=longest,menu
 " current one.
 set splitright
 
+" Status line
+set statusline=%f%3(%m%)%r%h%w\ %{fugitive#statusline()}%=[%3l,%2v\ %P]
+
 
 "----------------------------------------------------------------------------
 " Search
