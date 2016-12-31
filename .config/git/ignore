@@ -1,0 +1,15 @@
+# swap
+[._]*.s[a-w][a-z]
+[._]s[a-w][a-z]
+# session
+Session.vim
+# temporary
+.netrwhist
+*~
+# auto-generated tag files
+tags
+# local settings
+.exrc
+
+# Build directory
+[Bb]uild/
