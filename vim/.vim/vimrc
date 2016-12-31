@@ -59,7 +59,7 @@ set completeopt=longest,menu
 set splitright
 
 " Status line
-set statusline=%f%3(%m%)%r%h%w\ %{fugitive#statusline()}%=[%3l,%2v\ %P]
+set statusline=%f%3(%m%)%r%h%w[%{&ff}]%{fugitive#statusline()}%=[%3l,%2v\ %P]
 
 
 "----------------------------------------------------------------------------
@@ -327,11 +327,10 @@ augroup END
 set t_Co=256
 
 " Color scheme
-" colorscheme jellybeans
-let g:molokai_original = 1
-let g:rehash256 = 1
-colorscheme molokai
-
+" let g:rehash256 = 1
+" let g:molokai_original = 1
+" colorscheme molokai
+colorscheme badwolf
 
 " Omnifunc
 setlocal omnifunc=syntaxcomplete#Complete
@@ -346,6 +345,8 @@ execute pathogen#infect()
 let g:slime_target = "tmux"
 let g:slime_default_config = {"socket_name": "default", "target_pane": "0"}
 let g:slime_dont_ask_default = 1
+nnoremap <silent> <leader>sa :%SlimeSend<CR>
+nnoremap <silent> <leader>sc :SlimeSend1 <C-L><CR>
 
 " Map to open Taglist
 nnoremap <silent> <leader>tl :TlistOpen<CR>
@@ -381,6 +382,9 @@ let g:bufferline_rotate = 2
 
 " Ctrlp
 let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_map = '<leader>f'
+let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:10,results:100'
+nnoremap <leader>b :CtrlPBuffer<CR>
 
 " YouCompleteMe
 " let g:clang_library_path = "/usr/lib/llvm-3.4/lib"
@@ -406,15 +410,14 @@ command -nargs=1 Saveas :w! >> <args> | :e <args>
 "| ctrlp.vim            https://github.com/ctrlpvim/ctrlp.vim.git
 "| delimitMate          https://github.com/Raimondi/delimitMate.git
 "| groovyindent-unix    https://github.com/vim-scripts/groovyindent-unix.git
-"| molokai              https://github.com/tomasr/molokai.git
 "| rust.vim             https://github.com/rust-lang/rust.vim.git
 "| syntastic            https://github.com/scrooloose/syntastic.git
 "| vala.vim             https://github.com/arrufat/vala.vim.git
 "| vim-bbye             https://github.com/moll/vim-bbye.git
 "| vim-commentary       https://github.com/tpope/vim-commentary.git
 "| vim-fugitive         https://github.com/tpope/vim-fugitive.git
+"| vim-gas              https://github.com/Shirk/vim-gas.git
 "| vim-obsession        https://github.com/tpope/vim-obsession.git
-"| vim-pathogen         https://github.com/tpope/vim-pathogen.git
 "| vimplug              http://github.com/mahyarap/vimplug.git
 "| vim-slime            https://github.com/jpalardy/vim-slime.git
 "| vim-surround         https://github.com/tpope/vim-surround.git
