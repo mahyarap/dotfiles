@@ -400,3 +400,20 @@ endif
 
 runtime! ftplugin/man.vim
 runtime! macros/matchit.vim
+command -nargs=1 Saveas :w! >> <args> | :e <args>
+
+"| badwolf              https://github.com/sjl/badwolf.git
+"| ctrlp.vim            https://github.com/ctrlpvim/ctrlp.vim.git
+"| delimitMate          https://github.com/Raimondi/delimitMate.git
+"| groovyindent-unix    https://github.com/vim-scripts/groovyindent-unix.git
+"| rust.vim             https://github.com/rust-lang/rust.vim.git
+"| syntastic            https://github.com/scrooloose/syntastic.git
+"| vala.vim             https://github.com/arrufat/vala.vim.git
+"| vim-bbye             https://github.com/moll/vim-bbye.git
+"| vim-commentary       https://github.com/tpope/vim-commentary.git
+"| vim-fugitive         https://github.com/tpope/vim-fugitive.git
+"| vim-gas              https://github.com/Shirk/vim-gas.git
+"| vim-obsession        https://github.com/tpope/vim-obsession.git
+"| vimplug              http://github.com/mahyarap/vimplug.git
+"| vim-slime            https://github.com/jpalardy/vim-slime.git
+"| vim-surround         https://github.com/tpope/vim-surround.git
