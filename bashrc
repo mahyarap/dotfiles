@@ -33,6 +33,7 @@ export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 export WORKON_HOME=~/.virtualenvs
 source "/usr/local/bin/virtualenvwrapper.sh"
 
+# https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh
 source "$HOME/bin/git-prompt.sh"
 PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w$(__git_ps1 " (%s)")\$ '
 
