@@ -133,6 +133,13 @@ mkdircd() {
 	mkdir "$1" && cd "$1"
 }
 
+grepless() {
+	result=$(grep --color=always "$@")
+	if [[ $? -eq 0 ]]; then
+		echo -e "$result" | less -R
+	fi
+}
+
 ppath="/home/mahyar/Projects"
 CDPATH=".:$ppath/programming:$ppath/repos"
 export PROMPT_DIRTRIM=2
