@@ -284,6 +284,13 @@ endfunction
 
 
 "------------------------------------------------------------
+" Commands
+"
+"
+command -nargs=1 Saveas :w! >> <args> | :e <args>
+
+
+"------------------------------------------------------------
 " Autocommands
 "
 
@@ -404,7 +411,6 @@ endif
 
 runtime! ftplugin/man.vim
 runtime! macros/matchit.vim
-command -nargs=1 Saveas :w! >> <args> | :e <args>
 
 "| badwolf              https://github.com/sjl/badwolf.git
 "| ctrlp.vim            https://github.com/ctrlpvim/ctrlp.vim.git
