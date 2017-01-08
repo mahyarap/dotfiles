@@ -330,6 +330,9 @@ augroup END
 "------------------------------------------------------------
 " Plugins Config
 
+" Pathogen
+execute pathogen#infect()
+
 " Set terminal colors to 256 (MAX)
 set t_Co=256
 
@@ -341,9 +344,6 @@ colorscheme badwolf
 
 " Omnifunc
 setlocal omnifunc=syntaxcomplete#Complete
-
-" Pathogen
-execute pathogen#infect()
 
 " Add tags
 " set tags=./tags;
