@@ -412,7 +412,7 @@ endif
 runtime! ftplugin/man.vim
 runtime! macros/matchit.vim
 
-"| badwolf              https://github.com/sjl/badwolf.git
+"| badwolf              https://github.com/mahyarap/badwolf.git
 "| ctrlp.vim            https://github.com/ctrlpvim/ctrlp.vim.git
 "| delimitMate          https://github.com/Raimondi/delimitMate.git
 "| groovyindent-unix    https://github.com/vim-scripts/groovyindent-unix.git
