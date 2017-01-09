@@ -184,6 +184,9 @@ let g:pyindent_open_paren='&sw'
 " Indent for a continuation line
 let g:pyindent_continue='&sw'
 
+" Go
+let g:go_highlight_trailing_whitespace_error = 0
+
 
 "------------------------------------------------------------
 " Mappings
