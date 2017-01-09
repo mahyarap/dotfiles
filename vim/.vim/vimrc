@@ -225,6 +225,12 @@ inoremap <C-right> <esc>:bnext<CR>
 nnoremap <C-right> :bnext<CR>
 nnoremap <C-left> :bprev<CR>
 
+" Window switch
+nnoremap <S-up> <C-W><up>
+nnoremap <S-down> <C-W><down>
+nnoremap <S-left> <C-W><left>
+nnoremap <S-right> <C-W><right>
+
 " Short cut to edit vimrc
 nnoremap <leader>ev :edit $MYVIMRC<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR>
