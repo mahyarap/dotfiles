@@ -286,8 +286,11 @@ endfunction
 "------------------------------------------------------------
 " Commands
 "
-"
+
 command -nargs=1 Saveas :w! >> <args> | :e <args>
+command Bd bp\|bd \#
+command BD bp\|bd \#
+command BW bp\|bw \#
 
 
 "------------------------------------------------------------
@@ -419,7 +422,6 @@ runtime! macros/matchit.vim
 "| rust.vim             https://github.com/rust-lang/rust.vim.git
 "| syntastic            https://github.com/scrooloose/syntastic.git
 "| vala.vim             https://github.com/arrufat/vala.vim.git
-"| vim-bbye             https://github.com/moll/vim-bbye.git
 "| vim-commentary       https://github.com/tpope/vim-commentary.git
 "| vim-fugitive         https://github.com/tpope/vim-fugitive.git
 "| vim-gas              https://github.com/Shirk/vim-gas.git
