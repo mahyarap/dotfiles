@@ -296,10 +296,12 @@ endfunction
 " Commands
 "
 
-command -nargs=1 Saveas :w! >> <args> | :e <args>
-command Bd bp\|bd \#
-command BD bp\|bd \#
-command BW bp\|bw \#
+command! -nargs=1 Saveas :w! >> <args> | :e <args>
+
+command! Bd bp | bd #
+command! BD bp | bd #
+command! Bw bp | bw #
+command! BW bp | bw #
 
 
 "------------------------------------------------------------
