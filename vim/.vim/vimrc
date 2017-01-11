@@ -342,6 +342,7 @@ augroup END
 augroup folding
 	autocmd!
 	autocmd BufNewFile,BufReadPost vimrc setlocal foldmethod=marker foldlevel=0
+	autocmd BufNewFile,BufReadPost init.vim setlocal foldmethod=marker foldlevel=0
 augroup END
 
 " }}}
