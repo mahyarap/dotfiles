@@ -3,11 +3,23 @@
 " By Mahyar Abbaspour
 "
 
-" User Interface {{{
+" UI {{{
 "
+
+" Pathogen
+execute pathogen#infect()
+
+" Report number of terminal colors
+set t_Co=256
 
 " Enable syntax highlighting
 syntax enable
+
+" Color scheme
+" let g:rehash256 = 1
+" let g:molokai_original = 1
+" colorscheme molokai
+colorscheme badwolf
 
 " Minimal number of screen lines to keep above and below the cursor.
 set scrolloff=1
@@ -348,18 +360,6 @@ augroup END
 " }}}
 
 " Plugins Config {{{
-
-" Pathogen
-execute pathogen#infect()
-
-" Set terminal colors to 256 (MAX)
-set t_Co=256
-
-" Color scheme
-" let g:rehash256 = 1
-" let g:molokai_original = 1
-" colorscheme molokai
-colorscheme badwolf
 
 " Omnifunc
 setlocal omnifunc=syntaxcomplete#Complete
