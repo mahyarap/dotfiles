@@ -214,6 +214,9 @@ let mapleader=' '
 " which is the default
 map Y y$
 
+" Don't use Ex mode, use Q for formatting.
+map Q gq
+
 " Spell check
 nnoremap <leader>sp :set spell!<CR>
 
