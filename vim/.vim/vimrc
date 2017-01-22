@@ -10,7 +10,11 @@
 execute pathogen#infect()
 
 " Report number of terminal colors
+" if has("termguicolors")
+" set termguicolors
+" else
 set t_Co=256
+" endif
 
 " Enable syntax highlighting
 syntax enable
@@ -224,7 +228,7 @@ inoremap <C-@> <C-N>
 
 " Smart popup menu
 inoremap <silent><expr> <C-@> pumvisible() ? '<C-n>' :
-		\ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+            \ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
 
 " Man page plugin map
 nmap <leader>m <leader>K
@@ -262,12 +266,12 @@ cnoremap <C-p> <up>
 "
 
 function! GnuCStyle()
-	setlocal cindent
-	setlocal cinoptions=>4,n-2,{2,^-2,:2,=2,g0,h2,p5,t0,+2,(0,u0,w1,m1
-	setlocal shiftwidth=2
-	setlocal softtabstop=2
-	setlocal textwidth=79
-	setlocal fo-=ro fo+=cql
+    setlocal cindent
+    setlocal cinoptions=>4,n-2,{2,^-2,:2,=2,g0,h2,p5,t0,+2,(0,u0,w1,m1
+    setlocal shiftwidth=2
+    setlocal softtabstop=2
+    setlocal textwidth=79
+    setlocal fo-=ro fo+=cql
 endfunction
 
 " Save current view settings on a per-window, per-buffer basis.
@@ -292,13 +296,13 @@ function! AutoRestoreWinView()
 endfunction
 
 function! LoadCscope()
-	let db = findfile("cscope.out", ".;../../..")
-	if (!empty(db))
-		let path = strpart(db, 0, match(db, "/cscope.out$"))
-		set nocscopeverbose " suppress 'duplicate connection' error
-		exe "cs add " . db . " " . path
-		set cscopeverbose
-	endif
+    let db = findfile("cscope.out", ".;../../..")
+    if (!empty(db))
+        let path = strpart(db, 0, match(db, "/cscope.out$"))
+        set nocscopeverbose " suppress 'duplicate connection' error
+        exe "cs add " . db . " " . path
+        set cscopeverbose
+    endif
 endfunction
 
 " }}}
@@ -307,6 +311,8 @@ endfunction
 "
 
 command! -nargs=1 Saveas :w! >> <args> | :e <args>
+
+command! -nargs=* RunSilent execute ':silent !'.'<args>' | execute ':redraw!'
 
 command! Bd bp | bd #
 command! BD bp | bd #
@@ -319,45 +325,45 @@ command! BW bp | bw #
 "
 
 augroup indentation
-	autocmd!
-	autocmd Filetype lua   setlocal tabstop=2 shiftwidth=2
-	autocmd Filetype ruby  setlocal tabstop=2 shiftwidth=2
-	autocmd Filetype html* setlocal tabstop=2 shiftwidth=2
-	autocmd Filetype yaml  setlocal tabstop=2 shiftwidth=2
+    autocmd!
+    autocmd Filetype lua   setlocal tabstop=2 shiftwidth=2
+    autocmd Filetype ruby  setlocal tabstop=2 shiftwidth=2
+    autocmd Filetype html* setlocal tabstop=2 shiftwidth=2
+    autocmd Filetype yaml  setlocal tabstop=2 shiftwidth=2
 
-	autocmd Filetype c     setlocal tabstop=4 shiftwidth=4 noexpandtab
-	autocmd Filetype cpp   setlocal tabstop=4 shiftwidth=4 noexpandtab
-	autocmd Filetype go    setlocal tabstop=4 shiftwidth=4 noexpandtab
+    autocmd Filetype c     setlocal tabstop=4 shiftwidth=4 noexpandtab
+    autocmd Filetype cpp   setlocal tabstop=4 shiftwidth=4 noexpandtab
+    autocmd Filetype go    setlocal tabstop=4 shiftwidth=4 noexpandtab
 augroup END
 
 augroup spelling
-	autocmd!
-	autocmd Filetype text      setlocal spell   textwidth=79
-	autocmd Filetype markdown  setlocal spell   textwidth=79
-	autocmd FileType gitcommit setlocal spell
-	autocmd FileType help      setlocal nospell
+    autocmd!
+    autocmd Filetype text      setlocal spell   textwidth=79
+    autocmd Filetype markdown  setlocal spell   textwidth=79
+    autocmd FileType gitcommit setlocal spell
+    autocmd FileType help      setlocal nospell
 augroup END
 
 augroup filetypes
-	autocmd!
-	autocmd BufNewFile,BufReadPost *.md        setlocal filetype=markdown
-	autocmd BufNewFile,BufReadPost *.h         setlocal filetype=c
-	autocmd BufNewFile,BufReadPost Vagrantfile setlocal filetype=ruby
+    autocmd!
+    autocmd BufNewFile,BufReadPost *.md        setlocal filetype=markdown
+    autocmd BufNewFile,BufReadPost *.h         setlocal filetype=c
+    autocmd BufNewFile,BufReadPost Vagrantfile setlocal filetype=ruby
 augroup END
 
 augroup hooks
-	autocmd!
-	" When switching buffers, preserve window view.
-	autocmd BufLeave * call AutoSaveWinView()
-	autocmd BufEnter * call AutoRestoreWinView()
+    autocmd!
+    " When switching buffers, preserve window view.
+    autocmd BufLeave * call AutoSaveWinView()
+    autocmd BufEnter * call AutoRestoreWinView()
 
-	autocmd BufEnter *.c call LoadCscope()
+    autocmd BufEnter *.c call LoadCscope()
 augroup END
 
 augroup folding
-	autocmd!
-	autocmd BufNewFile,BufReadPost vimrc setlocal foldmethod=marker foldlevel=0
-	autocmd BufNewFile,BufReadPost init.vim setlocal foldmethod=marker foldlevel=0
+    autocmd!
+    autocmd BufNewFile,BufReadPost vimrc setlocal foldmethod=marker foldlevel=0
+    autocmd BufNewFile,BufReadPost init.vim setlocal foldmethod=marker foldlevel=0
 augroup END
 
 " }}}
@@ -385,9 +391,9 @@ imap <C-c> <plug>NERDCommenterInsert
 let NERDSpaceDelims = 1
 let g:NERDAltDelims_python = 1
 let g:NERDCustomDelimiters = {
-	\ 'asm': { 'left': '#' },
-	\ 'dosini': {'left': '#'},
-\}
+    \ 'asm': { 'left': '#' },
+    \ 'dosini': {'left': '#'},
+    \}
 
 " Delimate
 let delimitMate_expand_cr = 1
@@ -425,19 +431,14 @@ nnoremap <leader>b :CtrlPBuffer<CR>
 
 " Cscope
 if has('cscope')
-	set cscopetag cscopeverbose cscoperelative
-	if has('quickfix')
-		set cscopequickfix=s-,c-,d-,i-,t-,e-
-	endif
+    set cscopetag cscopeverbose cscoperelative
+    if has('quickfix')
+        set cscopequickfix=s-,c-,d-,i-,t-,e-
+    endif
 endif
 
 runtime! ftplugin/man.vim
 runtime! macros/matchit.vim
-function! Mahyar(args)
-	grep a:rgs
-	redraw!
-endfunction
-command! -nargs=+ Grep call Mahyar('<args>')
 
 " }}}
 
