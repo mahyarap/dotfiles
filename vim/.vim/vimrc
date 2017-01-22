@@ -168,16 +168,15 @@ set gdefault
 "
 
 " Indentation settings for using 4 spaces instead of tabs.
-" Do not change 'tabstop' from its default value of 8 with this setup.
-"set shiftwidth=4
-"set softtabstop=4
-"set expandtab
-
-" Indentation settings for using hard tabs. Display tabs as four
-" characters wide.
 set tabstop=4
 set shiftwidth=4
-set noexpandtab
+set expandtab
+
+" Indentation settings for using hard tabs. Display tabs as four characters
+" wide.
+" set tabstop=4
+" set shiftwidth=4
+" set noexpandtab
 
 " When opening a new line and no filetype-specific indenting is enabled, keep
 " the same indent as the line you're currently on. Useful for READMEs, etc.
@@ -321,16 +320,20 @@ command! BW bp | bw #
 
 augroup indentation
 	autocmd!
-	autocmd Filetype python setlocal tabstop=4 shiftwidth=4 expandtab
-	autocmd Filetype lua    setlocal tabstop=2 shiftwidth=2 expandtab
-	autocmd Filetype ruby   setlocal tabstop=2 shiftwidth=2 expandtab
-	autocmd Filetype html*  setlocal tabstop=2 shiftwidth=2 expandtab
+	autocmd Filetype lua   setlocal tabstop=2 shiftwidth=2
+	autocmd Filetype ruby  setlocal tabstop=2 shiftwidth=2
+	autocmd Filetype html* setlocal tabstop=2 shiftwidth=2
+	autocmd Filetype yaml  setlocal tabstop=2 shiftwidth=2
+
+	autocmd Filetype c     setlocal tabstop=4 shiftwidth=4 noexpandtab
+	autocmd Filetype cpp   setlocal tabstop=4 shiftwidth=4 noexpandtab
+	autocmd Filetype go    setlocal tabstop=4 shiftwidth=4 noexpandtab
 augroup END
 
 augroup spelling
 	autocmd!
 	autocmd Filetype text      setlocal spell   textwidth=79
-	autocmd Filetype markdown  setlocal spell   textwidth=79 tabstop=4 shiftwidth=4 expandtab
+	autocmd Filetype markdown  setlocal spell   textwidth=79
 	autocmd FileType gitcommit setlocal spell
 	autocmd FileType help      setlocal nospell
 augroup END
@@ -430,6 +433,11 @@ endif
 
 runtime! ftplugin/man.vim
 runtime! macros/matchit.vim
+function! Mahyar(args)
+	grep a:rgs
+	redraw!
+endfunction
+command! -nargs=+ Grep call Mahyar('<args>')
 
 " }}}
 
