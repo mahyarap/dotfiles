@@ -421,6 +421,8 @@ let g:bufferline_rotate = 2
 " Ctrlp
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_map = '<leader>f'
+let g:ctrlp_open_new_file = 'r'
+let g:ctrlp_open_multiple_files = 'i'
 let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:10,results:100'
 nnoremap <leader>b :CtrlPBuffer<CR>
 
