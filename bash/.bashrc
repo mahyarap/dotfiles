@@ -140,6 +140,30 @@ grepless() {
 	fi
 }
 
+mvall() {
+    if [[ $# -lt 1 ]]; then
+        err "mvall: missing operand"
+        return 1
+    elif [[ $# -gt 1 ]]; then
+        err "mvall: cannot mv to more than one destination"
+        return 1
+    fi
+
+    if [[ ! -e "$1" ]]; then
+        err "mvall: target does not exist"
+        return 1
+    elif [[ ! -d "$1" ]]; then
+        err "mvall: target is not a directory"
+        return 1
+    fi
+
+    for i in *; do
+        if [[ "$i" != "$1" ]]; then
+            mv "$i" "$1"
+        fi
+    done
+}
+
 ppath="/home/mahyar/Projects"
 CDPATH=".:$ppath/programming:$ppath/repos"
 export PROMPT_DIRTRIM=2
