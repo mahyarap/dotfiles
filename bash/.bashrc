@@ -164,7 +164,7 @@ mvall() {
     done
 }
 
-ppath="/home/mahyar/Projects"
+ppath="/home/mahyar/projects"
 CDPATH=".:$ppath/programming:$ppath/repos"
 export PROMPT_DIRTRIM=2
 alias startk='sudo /etc/init.d/kerio-kvc start'
