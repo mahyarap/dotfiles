@@ -175,6 +175,7 @@ alias tmux='tmux -2'
 alias emacs='emacs -nw'
 alias xclip='xclip -selection clipboard'
 alias gopen='gnome-open'
+alias tailf='tail -f'
 
 # virtualenv stuff
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
