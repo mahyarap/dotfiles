@@ -105,6 +105,7 @@ set hidden
 set notimeout ttimeout ttimeoutlen=200
 
 " Enhanced command-line completion.
+set wildmode=longest,list,full
 set wildmenu
 
 " Enables the reading of .vimrc, .exrc and .gvimrc in the current directory.
