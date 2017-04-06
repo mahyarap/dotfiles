@@ -227,10 +227,7 @@ map Q gq
 " Spell check
 nnoremap <leader>sp :set spell!<CR>
 
-" Use <F4> to toggle between 'paste' and 'nopaste'
-set pastetoggle=<F4>
-
-" Map BACKSPACE to disable search highlighting
+" Map CTRL-L to disable search highlighting
 nnoremap <silent><C-L> :nohlsearch<CR>
 
 " Map CTRL-SPACE for autocompletion
