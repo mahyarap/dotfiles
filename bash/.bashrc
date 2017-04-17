@@ -190,3 +190,4 @@ alias vimm='vim $(git status --short --porcelain | grep "^ M" | cut -d" " -f3)'
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 export GUILE_AUTO_COMPILE=0
+export PYTHONSTARTUP="$HOME/.pythonrc"

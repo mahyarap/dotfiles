@@ -26,8 +26,8 @@ if [ -d "/usr/local/go/bin" ]; then
 	PATH="$PATH:/usr/local/go/bin"
 fi
 
-if [ -d "$HOME/Projects/programming/go" ]; then
-	export GOPATH="$HOME/Projects/programming/go"
+if [ -d "$HOME/projects/programming/go" ]; then
+	export GOPATH="$HOME/projects/programming/go"
 fi
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
