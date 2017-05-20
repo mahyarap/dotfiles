@@ -181,6 +181,7 @@ alias emacs='emacs -nw'
 alias xclip='xclip -selection clipboard'
 alias gopen='gnome-open'
 alias tailf='tail -f'
+alias curlj="curl -sv -H 'Accept: application/json' -H 'Content-Type: application/json'"
 
 # virtualenv stuff
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
