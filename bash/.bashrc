@@ -117,6 +117,11 @@ fi
 #--------------------------------------------------------------------
 # USER DEFINED
 
+
+shopt -s checkjobs
+shopt -s globstar
+
+
 err() {
 	echo "$1" 1>&2
 }
@@ -188,6 +193,5 @@ PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w$(__git_ps1 " (%s)")\$ '
 
 alias vimm='vim $(git status --short --porcelain | grep "^ M" | cut -d" " -f3)'
 
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 export GUILE_AUTO_COMPILE=0
 export PYTHONSTARTUP="$HOME/.pythonrc"
