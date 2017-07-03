@@ -316,6 +316,12 @@ function! LoadCscope()
     endif
 endfunction
 
+" A helper function to eat extra chars used in iabbrev
+function! Eatchar(pat)
+    let c = nr2char(getchar(0))
+    return (c =~ a:pat) ? '' : c
+endfunction
+
 " }}}
 
 " Commands {{{
@@ -355,6 +361,12 @@ augroup spelling
     autocmd FileType help      setlocal nospell
 augroup END
 
+augroup snippet
+    autocmd!
+    autocmd Filetype python iabbrev pdb     import pdb; pdb.set_trace()<C-R>=Eatchar('\s')<CR>
+    autocmd Filetype python iabbrev fpprint from pprint import pprint<C-R>=Eatchar('\s')<CR>
+augroup END
+
 augroup filetypes
     autocmd!
     autocmd BufNewFile,BufReadPost *.md        setlocal filetype=markdown
@@ -373,7 +385,7 @@ augroup END
 
 augroup folding
     autocmd!
-    autocmd BufNewFile,BufReadPost vimrc setlocal foldmethod=marker foldlevel=0
+    autocmd BufNewFile,BufReadPost vimrc    setlocal foldmethod=marker foldlevel=0
     autocmd BufNewFile,BufReadPost init.vim setlocal foldmethod=marker foldlevel=0
 augroup END
 
