@@ -396,19 +396,6 @@ augroup END
 " Omnifunc
 setlocal omnifunc=syntaxcomplete#Complete
 
-" Add tags
-" set tags=./tags;
-
-" Slime
-let g:slime_target = "tmux"
-let g:slime_default_config = {"socket_name": "default", "target_pane": "0"}
-let g:slime_dont_ask_default = 1
-nnoremap <silent> <leader>sa :%SlimeSend<CR>
-nnoremap <silent> <leader>sc :SlimeSend1 <C-L><CR>
-
-" Map to open Taglist
-nnoremap <silent> <leader>tl :TlistOpen<CR>
-
 " NERDCommenter
 imap <C-c> <plug>NERDCommenterInsert
 let NERDSpaceDelims = 1
@@ -481,8 +468,6 @@ runtime! macros/matchit.vim
 "| vim-commentary          https://github.com/tpope/vim-commentary.git
 "| vim-fugitive            https://github.com/tpope/vim-fugitive.git
 "| vim-gas                 https://github.com/Shirk/vim-gas.git
-"| vim-obsession           https://github.com/tpope/vim-obsession.git
 "| vimplug                 https://github.com/mahyarap/vimplug.git
-"| vim-slime               https://github.com/jpalardy/vim-slime.git
 "| vim-surround            https://github.com/tpope/vim-surround.git
 "| vim-python-pep8-indent  https://github.com/Vimjas/vim-python-pep8-indent.git
