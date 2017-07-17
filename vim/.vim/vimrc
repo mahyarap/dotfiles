@@ -408,6 +408,7 @@ let g:NERDCustomDelimiters = {
 " Delimate
 let delimitMate_expand_cr = 1
 autocmd FileType python let b:delimitMate_nesting_quotes = ['"']
+autocmd FileType elixir let b:delimitMate_nesting_quotes = ['"']
 autocmd FileType scheme let b:delimitMate_quotes = "\""
 
 " Syn
