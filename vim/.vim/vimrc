@@ -105,7 +105,7 @@ set hidden
 set notimeout ttimeout ttimeoutlen=200
 
 " Enhanced command-line completion.
-set wildmode=longest,list,full
+set wildmode=longest,list
 set wildmenu
 
 " Enables the reading of .vimrc, .exrc and .gvimrc in the current directory.
@@ -135,7 +135,7 @@ set smarttab
 
 " This option specifies how keyword completion works when CTRL-P or CTRL-N are
 " used.
-set complete=.,w,b,u,t,i,d,t
+set complete=.,w,b,u,t,i,d,
 
 " Virtual editing means that the cursor can be positioned where there is no
 " actual character.
