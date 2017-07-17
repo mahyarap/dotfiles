@@ -145,7 +145,7 @@ set virtualedit+=block
 " ignored when expanding wildcards, completing file or directory names, and
 " influences the result of expand(), glob() and globpath() unless a flag is
 " passed to disable this.
-set wildignore+=__pycache__
+set wildignore+=__pycache__,*.pyc
 
 " }}}
 
