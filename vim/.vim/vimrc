@@ -465,6 +465,7 @@ runtime! macros/matchit.vim
 "| groovyindent-unix       https://github.com/vim-scripts/groovyindent-unix.git
 "| rust.vim                https://github.com/rust-lang/rust.vim.git
 "| syntastic               https://github.com/scrooloose/syntastic.git
+"| tabular                 https://github.com/godlygeek/tabular.git
 "| vala.vim                https://github.com/arrufat/vala.vim.git
 "| vim-commentary          https://github.com/tpope/vim-commentary.git
 "| vim-fugitive            https://github.com/tpope/vim-fugitive.git
