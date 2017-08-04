@@ -170,7 +170,7 @@ mvall() {
 }
 
 ppath="/home/mahyar/projects"
-CDPATH=".:$ppath/programming:$ppath/repos"
+CDPATH=".:$ppath/programming"
 export PROMPT_DIRTRIM=2
 alias startk='sudo /etc/init.d/kerio-kvc start'
 alias stopk='sudo /etc/init.d/kerio-kvc stop'
@@ -182,6 +182,9 @@ alias xclip='xclip -selection clipboard'
 alias gopen='gnome-open'
 alias tailf='tail -f'
 alias curlj="curl -sv -H 'Accept: application/json' -H 'Content-Type: application/json'"
+alias wget='wget --content-disposition'
+alias isodate='date --iso-8601=seconds'
+alias grepr='grep --color=auto -rn --exclude-dir=.git'
 
 # virtualenv stuff
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
