@@ -473,3 +473,4 @@ runtime! macros/matchit.vim
 "| vimplug                 https://github.com/mahyarap/vimplug.git
 "| vim-surround            https://github.com/tpope/vim-surround.git
 "| vim-python-pep8-indent  https://github.com/Vimjas/vim-python-pep8-indent.git
+"| vim-gitgutter           https://github.com/airblade/vim-gitgutter.git
