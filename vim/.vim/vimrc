@@ -396,35 +396,21 @@ augroup END
 " Omnifunc
 setlocal omnifunc=syntaxcomplete#Complete
 
-" NERDCommenter
-imap <C-c> <plug>NERDCommenterInsert
-let NERDSpaceDelims = 1
-let g:NERDAltDelims_python = 1
-let g:NERDCustomDelimiters = {
-    \ 'asm': { 'left': '#' },
-    \ 'dosini': {'left': '#'},
-    \}
-
 " Delimate
 let delimitMate_expand_cr = 1
 autocmd FileType python let b:delimitMate_nesting_quotes = ['"']
 autocmd FileType elixir let b:delimitMate_nesting_quotes = ['"']
 autocmd FileType scheme let b:delimitMate_quotes = "\""
 
-" Syn
-" let g:syntastic_mode_map={ 'mode': 'active',
-"                      \ 'active_filetypes': [],
-"                      \ 'passive_filetypes': [''] }
+" Syntastic
+"let g:syntastic_mode_map={ 'mode': 'active',
+"                     \ 'active_filetypes': [],
+"                     \ 'passive_filetypes': [''] }
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_python_python_exec = '/usr/bin/python3'
 let g:syntastic_go_checkers = ['go', 'gofmt']
 let g:syntastic_rust_checkers = ['rustc']
-
-" Bufferline
-let g:bufferline_show_bufnr = 0
-let g:bufferline_modified = '*'
-let g:bufferline_rotate = 2
 
 " Ctrlp
 let g:ctrlp_cmd = 'CtrlP'
@@ -437,14 +423,6 @@ if executable('ag')
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
   let g:ctrlp_use_caching = 0
 endif
-
-" YouCompleteMe
-" let g:clang_library_path = "/usr/lib/llvm-3.4/lib"
-" let g:ycm_confirm_extra_conf = 0
-" let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
-" let g:ycm_min_num_of_chars_for_completion = 99
-" let g:ycm_auto_trigger = 0
-" let g:ycm_key_list_select_completion = ['<TAB>', '<Down>', '<Enter>']
 
 " Cscope
 if has('cscope')
