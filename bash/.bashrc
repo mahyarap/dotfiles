@@ -191,9 +191,10 @@ export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 export WORKON_HOME=~/.virtualenvs
 source "/usr/local/bin/virtualenvwrapper.sh"
 
-# https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh
-source "$HOME/bin/git-prompt.sh"
-PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w$(__git_ps1 " (%s)")\$ '
+__parse_git_branch() {
+    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+}
+PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w$(__parse_git_branch)\$ '
 
 alias vimm='vim $(git status --short --porcelain | grep "^ M" | cut -d" " -f3)'
 
