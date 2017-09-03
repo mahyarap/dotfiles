@@ -240,6 +240,12 @@ imap <C-@> <C-N>
 " that you can hit Enter at any time to insert it.
 inoremap <silent><expr> <C-@> pumvisible() ? '<C-n>' :
             \ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+inoremap <silent><expr> <C-N> pumvisible() ? '<C-n>' :
+            \ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+inoremap <silent><expr> <C-X><C-N> pumvisible() ? '<C-x><C-n>' :
+            \ '<C-x><C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+inoremap <silent><expr> <C-X><C-O> pumvisible() ? '<C-x><C-o>' :
+            \ '<C-x><C-o><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
 
 " Man page plugin map
 nmap <leader>m <leader>K
