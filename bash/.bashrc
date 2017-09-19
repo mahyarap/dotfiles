@@ -195,7 +195,7 @@ source "/usr/local/bin/virtualenvwrapper.sh"
 __parse_git_branch() {
     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
-PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w$(__parse_git_branch)\$ '
+PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w$(__parse_git_branch)[\j]$ '
 
 alias vimm='vim $(git status --short --porcelain | grep "^ M" | cut -d" " -f3)'
 
