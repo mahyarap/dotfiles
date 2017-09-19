@@ -120,6 +120,7 @@ fi
 
 shopt -s checkjobs
 shopt -s globstar
+shopt -s extglob
 
 
 err() {
