@@ -61,7 +61,7 @@ set t_vb=
 set splitright
 
 " Status line
-set statusline=%f%3(%m%)%r%h%w[%{&ff}]%{fugitive#statusline()}%=[%3l,%2v\ %P]
+set statusline=%f%3(%m%)%r%h%w[%{&ff}]%{fugitive#statusline()}%=[%3lL,%2vC\ %P]
 
 " }}}
 
