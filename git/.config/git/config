@@ -1,0 +1,9 @@
+[core]
+	editor = vim
+	pager = less --tabs=4 -RFX
+[fetch]
+    prune = true
+[alias]
+	us = reset HEAD --
+    co = checkout
+    st = status -sb
