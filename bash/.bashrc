@@ -122,6 +122,9 @@ shopt -s checkjobs
 shopt -s globstar
 shopt -s extglob
 
+# Disable flow control CTRL-S
+stty -ixon
+
 
 err() {
 	echo "$1" 1>&2
