@@ -425,9 +425,15 @@ let g:ctrlp_open_new_file = 'r'
 let g:ctrlp_open_multiple_files = 'i'
 let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:10,results:100'
 nnoremap <leader>b :CtrlPBuffer<CR>
+let g:ctrlp_user_command = {
+\ 'types': {
+  \ 1: ['.git', 'cd %s && git ls-files -co --exclude-standard'],
+  \ },
+\ 'fallback': 'find %s -type f',
+\ }
+let g:ctrlp_use_caching = 0
 if executable('ag')
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-  let g:ctrlp_use_caching = 0
+  let g:ctrlp_user_command['fallback'] = 'ag %s -l --nocolor -g ""'
 endif
 
 " Cscope
