@@ -7,3 +7,6 @@
 	us = reset HEAD --
     co = checkout
     st = status -sb
+[color "grep"]
+    linenumber = green
+    filename = magenta
