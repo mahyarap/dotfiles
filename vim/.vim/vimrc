@@ -386,6 +386,8 @@ augroup hooks
     autocmd BufLeave * call AutoSaveWinView()
     autocmd BufEnter * call AutoRestoreWinView()
 
+    autocmd InsertLeave * if &diff == 1 | diffupdate | endif
+
     autocmd BufEnter *.c call LoadCscope()
 augroup END
 
