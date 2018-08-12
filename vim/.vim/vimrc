@@ -411,16 +411,6 @@ autocmd FileType python let b:delimitMate_nesting_quotes = ['"']
 autocmd FileType elixir let b:delimitMate_nesting_quotes = ['"']
 autocmd FileType scheme let b:delimitMate_quotes = "\""
 
-" Syntastic
-"let g:syntastic_mode_map={ 'mode': 'active',
-"                     \ 'active_filetypes': [],
-"                     \ 'passive_filetypes': [''] }
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_python_python_exec = '/usr/bin/python3'
-let g:syntastic_go_checkers = ['go', 'gofmt']
-let g:syntastic_rust_checkers = ['rustc']
-
 " Ctrlp
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_map = '<leader>f'
@@ -456,7 +446,6 @@ runtime! macros/matchit.vim
 "| ctrlp.vim               https://github.com/ctrlpvim/ctrlp.vim.git
 "| delimitMate             https://github.com/Raimondi/delimitMate.git
 "| groovyindent-unix       https://github.com/vim-scripts/groovyindent-unix.git
-"| syntastic               https://github.com/scrooloose/syntastic.git
 "| tabular                 https://github.com/godlygeek/tabular.git
 "| vala.vim                https://github.com/arrufat/vala.vim.git
 "| vim-commentary          https://github.com/tpope/vim-commentary.git
