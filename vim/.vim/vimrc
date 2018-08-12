@@ -10,11 +10,11 @@
 execute pathogen#infect()
 
 " Report number of terminal colors
-" if has("termguicolors")
-" set termguicolors
-" else
-set t_Co=256
-" endif
+if has("termguicolors")
+    set termguicolors
+else
+    set t_Co=256
+endif
 
 " Enable syntax highlighting
 syntax enable
