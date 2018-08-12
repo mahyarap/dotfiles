@@ -378,6 +378,7 @@ augroup filetypes
     autocmd BufNewFile,BufReadPost *.md        setlocal filetype=markdown
     autocmd BufNewFile,BufReadPost *.h         setlocal filetype=c
     autocmd BufNewFile,BufReadPost Vagrantfile setlocal filetype=ruby
+    autocmd BufNewFile,BufReadPost *.sls       setlocal filetype=yaml
 augroup END
 
 augroup hooks
