@@ -440,22 +440,39 @@ endif
 runtime! ftplugin/man.vim
 runtime! macros/matchit.vim
 
+nnoremap / mm/
+nnoremap ? mm?
+
+let g:ale_enabled = 1
+let g:ale_lint_on_enter = 0
+let g:ale_lint_on_save = 1
+let g:ale_lint_on_insert_leave = 1
+let g:ale_lint_on_text_changed = 'never'
+" let g:ale_linters = {'go': ['gofmt', 'go vet', 'go build']}
+
 " }}}
 
-"| badwolf                 https://github.com/mahyarap/badwolf.git
-"| ctrlp.vim               https://github.com/ctrlpvim/ctrlp.vim.git
-"| delimitMate             https://github.com/Raimondi/delimitMate.git
-"| groovyindent-unix       https://github.com/vim-scripts/groovyindent-unix.git
-"| tabular                 https://github.com/godlygeek/tabular.git
-"| vala.vim                https://github.com/arrufat/vala.vim.git
-"| vim-commentary          https://github.com/tpope/vim-commentary.git
-"| vim-elixir              https://github.com/elixir-lang/vim-elixir.git
-"| vim-fugitive            https://github.com/tpope/vim-fugitive.git
-"| vim-gas                 https://github.com/Shirk/vim-gas.git
-"| vim-gitgutter           https://github.com/airblade/vim-gitgutter.git
-"| vim-grepper             https://github.com/mhinz/vim-grepper.git
-"| vim-pathogen            https://github.com/tpope/vim-pathogen
-"| vimplug                 https://github.com/mahyarap/vimplug
-"| vim-python-pep8-indent  https://github.com/Vimjas/vim-python-pep8-indent.git
-"| vim-surround            https://github.com/tpope/vim-surround.git
-"| vim-toml                https://github.com/cespare/vim-toml.git
+"| ale                      https://github.com/w0rp/ale.git
+"| badwolf                  https://github.com/mahyarap/badwolf.git
+"| ctrlp.vim                https://github.com/ctrlpvim/ctrlp.vim.git
+"| delimitMate              https://github.com/Raimondi/delimitMate.git
+"| groovyindent-unix        https://github.com/vim-scripts/groovyindent-unix.git
+"| rust.vim                 https://github.com/rust-lang/rust.vim.git
+"| tabular                  https://github.com/godlygeek/tabular.git
+"| vala.vim                 https://github.com/arrufat/vala.vim.git
+"| vim-commentary           https://github.com/tpope/vim-commentary.git
+"| vim-elixir               https://github.com/elixir-lang/vim-elixir.git
+"| vim-endwise              https://github.com/tpope/vim-endwise.git
+"| vim-fugitive             https://github.com/tpope/vim-fugitive.git
+"| vim-gas                  https://github.com/Shirk/vim-gas.git
+"| vim-gitgutter            https://github.com/airblade/vim-gitgutter.git
+"| vim-grepper              https://github.com/mhinz/vim-grepper.git
+"| vim-javascript           https://github.com/pangloss/vim-javascript.git
+"| vim-jsx                  https://github.com/mxw/vim-jsx.git
+"| vim-pathogen             https://github.com/tpope/vim-pathogen
+"| vimplug                  https://github.com/mahyarap/vimplug
+"| vim-python-pep8-indent   https://github.com/Vimjas/vim-python-pep8-indent.git
+"| vim-surround             https://github.com/tpope/vim-surround.git
+"| vim-textobj-user         https://github.com/kana/vim-textobj-user.git
+"| vim-toml                 https://github.com/cespare/vim-toml.git
+"| vim-vue                  https://github.com/posva/vim-vue.git
