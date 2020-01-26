@@ -442,18 +442,19 @@ if has('cscope')
     endif
 endif
 
+" ALE
+let g:ale_enabled = 1
+let g:ale_lint_on_enter = 0
+let g:ale_lint_on_save = 1
+let g:ale_lint_on_insert_leave = 1
+let g:ale_lint_on_text_changed = 'never'
+
 runtime! ftplugin/man.vim
 runtime! macros/matchit.vim
 
 nnoremap / mm/
 nnoremap ? mm?
 
-let g:ale_enabled = 1
-let g:ale_lint_on_enter = 0
-let g:ale_lint_on_save = 1
-let g:ale_lint_on_insert_leave = 1
-let g:ale_lint_on_text_changed = 'never'
-" let g:ale_linters = {'go': ['gofmt', 'go vet', 'go build']}
 
 " }}}
 
