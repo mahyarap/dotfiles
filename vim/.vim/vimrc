@@ -352,14 +352,16 @@ command! BW bp | bw #
 
 augroup indentation
     autocmd!
-    autocmd Filetype lua   setlocal tabstop=2 shiftwidth=2
-    autocmd Filetype ruby  setlocal tabstop=2 shiftwidth=2
-    autocmd Filetype html* setlocal tabstop=2 shiftwidth=2
-    autocmd Filetype yaml  setlocal tabstop=2 shiftwidth=2
+    autocmd Filetype lua        setlocal tabstop=2 shiftwidth=2
+    autocmd Filetype ruby       setlocal tabstop=2 shiftwidth=2
+    autocmd Filetype html*      setlocal tabstop=2 shiftwidth=2
+    autocmd Filetype vue        setlocal tabstop=2 shiftwidth=2
+    autocmd Filetype yaml       setlocal tabstop=2 shiftwidth=2
+    autocmd Filetype javascript setlocal tabstop=2 shiftwidth=2
 
-    autocmd Filetype c     setlocal tabstop=4 shiftwidth=4 noexpandtab
-    autocmd Filetype cpp   setlocal tabstop=4 shiftwidth=4 noexpandtab
-    autocmd Filetype go    setlocal tabstop=4 shiftwidth=4 noexpandtab
+    autocmd Filetype c   setlocal tabstop=4 shiftwidth=4 noexpandtab
+    autocmd Filetype cpp setlocal tabstop=4 shiftwidth=4 noexpandtab
+    autocmd Filetype go  setlocal tabstop=4 shiftwidth=4 noexpandtab
 augroup END
 
 augroup spelling
