@@ -147,6 +147,9 @@ set virtualedit+=block
 " passed to disable this.
 set wildignore+=__pycache__,*.pyc
 
+" Sets the delay for the CursorHold event to fire.
+set updatetime=1000
+
 " }}}
 
 " Searching {{{
