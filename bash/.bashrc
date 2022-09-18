@@ -173,9 +173,9 @@ mvall() {
     done
 }
 
-ppath="/home/mahyar/projects"
-CDPATH=".:$ppath/programming"
-export PROMPT_DIRTRIM=2
+CDPATH=".:$HOME/projects/programming"
+PROMPT_DIRTRIM=2
+
 alias startk='sudo /etc/init.d/kerio-kvc start'
 alias stopk='sudo /etc/init.d/kerio-kvc stop'
 alias confk='sudo dpkg-reconfigure kerio-control-vpnclient'
