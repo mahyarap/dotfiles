@@ -12,3 +12,6 @@
 [color "grep"]
     linenumber = green
     filename = magenta
+[user]
+	email = mahyar.abaspour@gmail.com
+	name = Mahyar Abbaspour
