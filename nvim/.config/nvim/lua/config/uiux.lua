@@ -1,8 +1,9 @@
 -- UI/UX Configuration
 
 -- Color scheme
--- vim.opt.background = 'light'
-vim.cmd('colorscheme vim')
+vim.opt.background = 'light'
+vim.g.solarized_extra_hi_groups = 1
+vim.cmd('colorscheme solarized8')
 
 -- Minimal number of screen lines to keep above and below the cursor
 vim.opt.scrolloff = 1
@@ -32,7 +33,7 @@ vim.opt.mouse = ''
 vim.opt.confirm = true
 
 -- Do not show extra information about the currently selected completion in the preview window
-vim.opt.completeopt = { 'noinsert', 'menu', 'preview' }
+vim.opt.completeopt = { 'longest', 'menu', }
 
 -- Enhanced command-line completion
 vim.opt.wildmode = 'longest,list'
@@ -60,7 +61,4 @@ vim.opt.smartcase = true
 -- all matches in a line are substituted instead of one.
 vim.opt.gdefault = true
 
--- Indentation settings for using 4 spaces instead of tabs.
-vim.opt.tabstop = 4
-vim.opt.shiftwidth = 4
-vim.opt.expandtab = true
+vim.opt.listchars = 'eol:$'

@@ -8,11 +8,11 @@ vim.api.nvim_set_keymap('n', 'Q', 'gq', { noremap = false, silent = false })
 vim.api.nvim_set_keymap('n', '<leader>sp', ':set spell!<CR>', { noremap = true, silent = true })
 
 -- Map CTRL-SPACE for autocompletion in insert mode
--- vim.api.nvim_set_keymap('i', '<C-SPACE>', '<C-X><C-O>', { noremap = false, silent = false })
+vim.api.nvim_set_keymap('i', '<C-SPACE>', '<C-N>', { noremap = true, silent = true })
 
 -- Ensure menu item always highlighted during autocompletion
--- vim.api.nvim_set_keymap('i', '<C-SPACE>', 'pumvisible() ? "<C-n>" : "<C-n><C-r>=pumvisible() ? \'<lt>Down>\' : \'\'<CR>"', { noremap = true, silent = true, expr = true })
--- vim.api.nvim_set_keymap('i', '<C-N>', 'pumvisible() ? "<C-n>" : "<C-n><C-r>=pumvisible() ? \'<lt>Down>\' : \'\'<CR>"', { noremap = true, silent = true, expr = true })
+vim.api.nvim_set_keymap('i', '<C-SPACE>', "pumvisible() ? '<C-n>' : '<C-n><C-r>=pumvisible() ? \"\\<lt>Down>\" : \"\"<CR>'", { noremap = true, silent = true, expr = true })
+vim.api.nvim_set_keymap('i', '<C-N>', "pumvisible() ? '<C-n>' : '<C-n><C-r>=pumvisible() ? \"\\<lt>Down>\" : \"\"<CR>'", { noremap = true, silent = true, expr = true })
 -- vim.api.nvim_set_keymap('i', '<C-X><C-N>', 'pumvisible() ? "<C-x><C-n>" : "<C-x><C-n><C-r>=pumvisible() ? \'<lt>Down>\' : \'\'<CR>"', { noremap = true, silent = true, expr = true })
 -- vim.api.nvim_set_keymap('i', '<C-X><C-O>', 'pumvisible() ? "<C-x><C-o>" : "<C-x><C-o><C-r>=pumvisible() ? \'<lt>Down>\' : \'\'<CR>"', { noremap = true, silent = true, expr = true })
 

@@ -1,8 +1,11 @@
 require('config.paq')
 require('config.uiux')
 require('config.mappings')
+require('config.formatting')
 require('plugins.lsp')
+require('plugins.lint')
 require('plugins.telescope')
+require('plugins.autopairs')
 
 -- vim.diagnostic.config({
 --     virtual_text = false,
