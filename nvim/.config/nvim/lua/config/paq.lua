@@ -11,4 +11,6 @@ require('paq') {
   'airblade/vim-gitgutter',
   'windwp/nvim-autopairs',
   'mfussenegger/nvim-lint',
+  'nvim-treesitter/nvim-treesitter',
+  'nvim-treesitter/nvim-treesitter-context',
 }

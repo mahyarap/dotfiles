@@ -62,3 +62,37 @@ vim.opt.smartcase = true
 vim.opt.gdefault = true
 
 vim.opt.listchars = 'eol:$'
+
+vim.opt.autoread = true
+
+local function auto_save_win_view()
+    if vim.w.SavedBufView == nil then
+        vim.w.SavedBufView = {}
+    end
+    vim.w.SavedBufView[vim.fn.bufnr("%")] = vim.fn.winsaveview()
+end
+
+local function auto_restore_win_view()
+    local buf = vim.fn.bufnr("%")
+    if vim.w.SavedBufView and vim.w.SavedBufView[buf] then
+        local v = vim.fn.winsaveview()
+        local at_start_of_file = v.lnum == 1 and v.col == 0
+        if at_start_of_file and not vim.o.diff then
+            vim.fn.winrestview(vim.w.SavedBufView[buf])
+        end
+        vim.w.SavedBufView[buf] = nil
+    end
+end
+
+vim.api.nvim_create_augroup("hooks", { clear = true })
+vim.api.nvim_create_autocmd("BufLeave", {
+    group = "hooks",
+    pattern = "*",
+    callback = auto_save_win_view,
+})
+
+vim.api.nvim_create_autocmd("BufEnter", {
+    group = "hooks",
+    pattern = "*",
+    callback = auto_restore_win_view,
+})
