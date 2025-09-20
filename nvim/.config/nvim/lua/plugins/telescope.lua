@@ -1,6 +1,6 @@
-local actions = require('telescope.actions')
+local actions = require("telescope.actions")
 local action_state = require("telescope.actions.state")
-local builtin = require('telescope.builtin')
+local builtin = require("telescope.builtin")
 
 -- Custom function to handle opening multiple selections
 -- If multiple files are selected with <Tab>, open all on <CR>
@@ -22,17 +22,17 @@ local function multi_open(prompt_bufnr)
 end
 
 -- Telescope plugin setup with custom key mappings
-require('telescope').setup({
+require("telescope").setup({
   defaults = {
     mappings = {
       i = {
-        ['<esc>'] = actions.close,
-        ['<C-j>'] = actions.move_selection_next,
-        ['<C-k>'] = actions.move_selection_previous,
-        ['<CR>']  = multi_open,
+        ["<esc>"] = actions.close,
+        ["<C-j>"] = actions.move_selection_next,
+        ["<C-k>"] = actions.move_selection_previous,
+        ["<CR>"]  = multi_open,
       },
       n = {
-        ['<CR>']  = multi_open,
+        ["<CR>"]  = multi_open,
       },
     },
   },
@@ -60,7 +60,8 @@ local function smart_find_files()
 end
 
 -- Key mappings
-vim.keymap.set('n', '<leader>f', smart_find_files, {})
-vim.keymap.set('n', '<leader>b', builtin.buffers, {})
-vim.keymap.set('n', '<leader>d', builtin.diagnostics, { noremap = true })
-vim.keymap.set('n', 'gd', builtin.lsp_definitions, { noremap = true })
+vim.keymap.set("n", "<leader>f", smart_find_files, {})
+vim.keymap.set("n", "<leader>b", builtin.buffers, {})
+vim.keymap.set("n", "<leader>d", builtin.diagnostics, { noremap = true })
+vim.keymap.set("n", "<leader>h", builtin.help_tags, {})
+vim.keymap.set("n", "gd", builtin.lsp_definitions, { noremap = true })

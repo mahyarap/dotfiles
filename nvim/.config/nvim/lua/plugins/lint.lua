@@ -1,6 +1,6 @@
-require('lint').linters_by_ft = {
-  python = {'ruff'},
-  sh = {'shellcheck'},
+require("lint").linters_by_ft = {
+  python = {"ruff"},
+  sh = {"shellcheck"},
 }
 
 vim.api.nvim_create_autocmd({ "BufWritePost" }, {
