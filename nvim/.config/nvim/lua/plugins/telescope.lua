@@ -24,6 +24,12 @@ end
 -- Telescope plugin setup with custom key mappings
 require("telescope").setup({
   defaults = {
+    layout_strategy = "flex",
+    layout_config = {
+      flex = {
+        flip_columns = 150,
+      },
+    },
     mappings = {
       i = {
         ["<esc>"] = actions.close,
@@ -63,5 +69,5 @@ end
 vim.keymap.set("n", "<leader>f", smart_find_files, {})
 vim.keymap.set("n", "<leader>b", builtin.buffers, {})
 vim.keymap.set("n", "<leader>d", builtin.diagnostics, { noremap = true })
-vim.keymap.set("n", "<leader>h", builtin.help_tags, {})
+vim.keymap.set("n", "<leader>ht", builtin.help_tags, {})
 vim.keymap.set("n", "gd", builtin.lsp_definitions, { noremap = true })
