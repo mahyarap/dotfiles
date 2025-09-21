@@ -33,8 +33,7 @@ vim.opt.mouse = ""
 vim.opt.confirm = true
 
 -- Do not show extra information about the currently selected completion in the preview window
--- vim.opt.completeopt = { "fuzzy", "menu", }
-vim.opt.completeopt = { "menu", "menuone", "noinsert", "popup", "fuzzy", }
+vim.opt.completeopt = {"menu", "menuone", "noinsert", "popup", "fuzzy",}
 
 -- Enhanced command-line completion
 vim.opt.wildmode = "longest,list"
@@ -43,7 +42,7 @@ vim.opt.wildmode = "longest,list"
 vim.opt.modeline = false
 
 -- Specify how keyword completion works when using CTRL-P or CTRL-N
--- vim.opt.complete = { ".", "w", "b", "u", "t", "i", "d" }
+vim.opt.complete = {".", "w", "b", "u", "t", "i", "d",}
 
 -- Allow virtual editing in block mode
 vim.opt.virtualedit:append({"block"})
