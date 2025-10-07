@@ -14,4 +14,5 @@ require("paq") {
   "nvim-treesitter/nvim-treesitter",
   "nvim-treesitter/nvim-treesitter-context",
   "tpope/vim-rsi",
+  "stevearc/conform.nvim",
 }

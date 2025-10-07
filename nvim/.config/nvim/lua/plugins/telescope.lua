@@ -67,7 +67,9 @@ end
 
 -- Key mappings
 vim.keymap.set("n", "<leader>f", smart_find_files, {})
-vim.keymap.set("n", "<leader>b", builtin.buffers, {})
+vim.keymap.set("n", "<leader>b", function()
+  builtin.buffers({sort_mru = true})
+end, {})
 vim.keymap.set("n", "<leader>d", builtin.diagnostics, { noremap = true })
 vim.keymap.set("n", "<leader>ht", builtin.help_tags, {})
 vim.keymap.set("n", "gd", builtin.lsp_definitions, { noremap = true })
