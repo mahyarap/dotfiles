@@ -8,6 +8,16 @@
 # for ssh logins, install and configure the libpam-umask package.
 #umask 022
 
+# User defined
+if [ -d "/usr/local/go/bin" ]; then
+	PATH="$PATH:/usr/local/go/bin"
+fi
+
+export EDITOR=vim
+
+
+# System default
+
 # if running bash
 if [ -n "$BASH_VERSION" ]; then
     # include .bashrc if it exists
@@ -20,16 +30,3 @@ fi
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
-
-# User defined
-if [ -d "/usr/local/go/bin" ]; then
-	PATH="$PATH:/usr/local/go/bin"
-fi
-
-if [ -d "$HOME/projects/programming/go" ]; then
-	export GOPATH="$HOME/projects/programming/go"
-fi
-
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
