@@ -10,15 +10,17 @@ esac
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
-HISTCONTROL=ignoreboth
+HISTCONTROL=ignoreboth:erasedups
 
 # append to the history file, don't overwrite it
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=10000
-HISTFILESIZE=20000
-HISTIGNORE='cd *:ls *:fg:bg:history'
+HISTSIZE=100000
+HISTFILESIZE=200000
+HISTIGNORE='cd *:ls:fg:bg:history'
+# Timestamp commands
+HISTTIMEFORMAT='%F %T  '
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -26,7 +28,7 @@ shopt -s checkwinsize
 
 # If set, the pattern "**" used in a pathname expansion context will
 # match all files and zero or more directories and subdirectories.
-#shopt -s globstar
+shopt -s globstar
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
@@ -119,7 +121,6 @@ fi
 
 
 shopt -s checkjobs
-shopt -s globstar
 shopt -s extglob
 
 # Disable flow control CTRL-S
@@ -173,12 +174,33 @@ mvall() {
     done
 }
 
-CDPATH=".:$HOME/projects/programming"
-PROMPT_DIRTRIM=2
+export FZF_DEFAULT_OPTS="--height 20% --min-height 10 --layout=reverse --border=rounded --prompt='❯ '"
+export FZF_ALT_C_COMMAND=''
+source <(fzf --bash)
+# 1) Stop fzf's default Alt-C macro binding
 
-alias startk='sudo /etc/init.d/kerio-kvc start'
-alias stopk='sudo /etc/init.d/kerio-kvc stop'
-alias confk='sudo dpkg-reconfigure kerio-control-vpnclient'
+# 2) Make Alt-C a real "execute function" binding
+__fzf_cd_widget__() {
+  local dir
+  dir=$(
+    FZF_DEFAULT_COMMAND=${FZF_ALT_C_COMMAND:-} \
+    FZF_DEFAULT_OPTS=$(__fzf_defaults "--reverse --walker=dir,follow,hidden --scheme=path" "${FZF_ALT_C_OPTS-} +m") \
+    FZF_DEFAULT_OPTS_FILE='' $(__fzfcmd)
+  ) || return
+
+  builtin cd -- "$dir" || return
+  READLINE_LINE=""
+  READLINE_POINT=0
+}
+
+# Remove any existing Alt-C bindings/macros and bind ours
+bind -r '\ec' 2>/dev/null
+bind -m emacs-standard -x '"\ec": __fzf_cd_widget__'
+bind -m vi-command     -x '"\ec": __fzf_cd_widget__'
+bind -m vi-insert      -x '"\ec": __fzf_cd_widget__'
+
+
+PROMPT_DIRTRIM=2
 
 alias tmux='tmux -2'
 alias emacs='emacs -nw'
@@ -189,19 +211,31 @@ alias curlj="curl -sv -H 'Accept: application/json' -H 'Content-Type: applicatio
 alias wget='wget --content-disposition'
 alias isodate='date --iso-8601=seconds'
 alias grepr='grep --color=auto -rn --exclude-dir=.git'
+alias vim=nvim
 
-# virtualenv stuff
-export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
-export WORKON_HOME=~/.virtualenvs
-source "/usr/local/bin/virtualenvwrapper.sh"
+if [ -f ~/.git-prompt.sh ]; then
+    source ~/.git-prompt.sh
+    PS1='${debian_chroot:+($debian_chroot)}\w$(__git_ps1)[\j]\$ '
+else
+    __parse_git_branch() {
+        git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+    }
+    PS1='${debian_chroot:+($debian_chroot)}\w$(__parse_git_branch)[\j]\$ '
+fi
 
-__parse_git_branch() {
-    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
-}
-PS1='${debian_chroot:+($debian_chroot)}\w$(__parse_git_branch)[\j]\$ '
-
-alias vimm='vim $(git status --short --porcelain | grep "^ M" | cut -d" " -f3)'
 
 export GUILE_AUTO_COMPILE=0
 export PYTHONSTARTUP="$HOME/.pythonrc"
-export EDITOR=vim
+
+export ANDROID_HOME=$HOME/Android/Sdk
+PATH=$PATH:$ANDROID_HOME/emulator
+PATH=$PATH:$ANDROID_HOME/tools
+PATH=$PATH:$ANDROID_HOME/tools/bin
+PATH=$PATH:$ANDROID_HOME/platform-tools
+export JAVA_HOME=/usr/local/android-studio/jbr
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+. "$HOME/.local/bin/env"
