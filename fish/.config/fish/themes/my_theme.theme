@@ -32,7 +32,7 @@ fish_color_status red
 fish_color_user brgreen
 fish_color_valid_path normal
 fish_pager_color_background
-fish_pager_color_completion green
+fish_pager_color_completion black
 fish_pager_color_description B3A06D
 fish_pager_color_prefix 'cyan'  '--underline'
 fish_pager_color_progress 'brwhite'  '--background=cyan'  '--bold'
