@@ -1,2 +1,4 @@
 vim/.vim/autoload/
 vim/.vim/bundle/
+
+fish/.config/fish/fish_variables
