@@ -3,11 +3,8 @@
 #
 
 # Universal-ish defaults
-set -Ux EDITOR nvim
+set -Ux EDITOR vim
 set -Ux PAGER less
-
-# Create/refresh LS_COLORS from dircolors output
-set -Ux LS_COLORS (dircolors -c | string match -rg "setenv LS_COLORS '([^']*)'")
 
 # Add common paths (safe, no duplicates)
 fish_add_path $HOME/bin
@@ -23,6 +20,11 @@ end
 
 # Disable greeting
 set -g fish_greeting  
+
+# Create/refresh LS_COLORS from dircolors output
+if type -q dircolors
+    set -Ux LS_COLORS (dircolors -c | string match -rg "setenv LS_COLORS '([^']*)'")
+end
 
 # Emacs-style autosuggestion acceptance
 bind ctrl-s accept-autosuggestion
