@@ -9,6 +9,7 @@ set -Ux PAGER less
 # Add common paths (safe, no duplicates)
 fish_add_path $HOME/bin
 fish_add_path $HOME/.local/bin
+fish_add_path $HOME/go/bin
 
 
 #
@@ -29,3 +30,10 @@ end
 # Emacs-style autosuggestion acceptance
 bind ctrl-s accept-autosuggestion
 bind alt-backspace backward-kill-word
+bind \cr '
+    if commandline --paging-mode >/dev/null
+        commandline -f down-line
+    else
+        commandline -f history-pager
+    end
+'
