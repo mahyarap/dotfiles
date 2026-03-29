@@ -13,7 +13,11 @@ if [ -d "/usr/local/go/bin" ]; then
 	PATH="$PATH:/usr/local/go/bin"
 fi
 
-export EDITOR=vim
+if command -v nvim >/dev/null 2>&1; then
+	export EDITOR=nvim
+else
+	export EDITOR=vim
+fi
 
 
 # System default
