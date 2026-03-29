@@ -3,7 +3,11 @@
 #
 
 # Universal-ish defaults
-set -Ux EDITOR vim
+if type -q nvim
+    set -Ux EDITOR nvim
+else type -q vim
+    set -Ux EDITOR vim
+end
 set -Ux PAGER less
 
 # Add common paths (safe, no duplicates)
