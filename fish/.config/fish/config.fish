@@ -4,11 +4,11 @@
 
 # Universal-ish defaults
 if type -q nvim
-    set -Ux EDITOR nvim
+    set -gx EDITOR nvim
 else type -q vim
-    set -Ux EDITOR vim
+    set -gx EDITOR vim
 end
-set -Ux PAGER less
+set -gx PAGER less
 
 # Add common paths (safe, no duplicates)
 fish_add_path $HOME/.local/bin
@@ -27,11 +27,9 @@ set -g fish_greeting
 
 # Create/refresh LS_COLORS from dircolors output
 if type -q dircolors
-    set -Ux LS_COLORS (dircolors -c | string match -rg "setenv LS_COLORS '([^']*)'")
+    set -gx LS_COLORS (dircolors -c | string match -rg "setenv LS_COLORS '([^']*)'")
 end
 
-# Emacs-style autosuggestion acceptance
-bind ctrl-s accept-autosuggestion
 bind alt-backspace backward-kill-word
 bind \cr '
     if commandline --paging-mode >/dev/null
