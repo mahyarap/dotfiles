@@ -33,7 +33,7 @@ vim.opt.mouse = ""
 vim.opt.confirm = true
 
 -- Do not show extra information about the currently selected completion in the preview window
-vim.opt.completeopt = {"menu", "menuone", "noinsert", "popup", "fuzzy",}
+vim.opt.completeopt = {"menu", "menuone", "noinsert", "fuzzy",}
 
 -- Enhanced command-line completion
 vim.opt.wildmode = "longest,list"

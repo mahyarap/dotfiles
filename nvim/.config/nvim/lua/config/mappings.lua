@@ -26,48 +26,20 @@ vim.cmd("cnoreabbrev Wa wa")
 vim.cmd("cnoreabbrev Q q")
 vim.cmd("cnoreabbrev Qa qa")
 
-
--- Helper to check if LSP omnifunc is available
-local function has_lsp_omnifunc()
-  return vim.bo.omnifunc == "v:lua.vim.lsp.omnifunc"
-end
-
--- Map <C-Space> in insert mode
 vim.keymap.set("i", "<C-Space>", function()
-  if has_lsp_omnifunc() then
-    -- Trigger LSP omnifunc completion
-    return "<C-x><C-o>"
-  else
-    -- Fallback: trigger normal insert completion
-    return "<C-n>"
+  local clients = vim.lsp.get_clients({ bufnr = 0 })
+
+  for _, client in ipairs(clients) do
+    if client:supports_method("textDocument/completion") then
+      -- Trigger LSP completion through built-in omni completion
+      return vim.api.nvim_replace_termcodes("<C-x><C-o>", true, false, true)
+    end
   end
+
+  -- Fallback to built-in keyword completion
+  return vim.api.nvim_replace_termcodes("<C-n>", true, false, true)
 end,
-  {expr = true, silent = true}
+  { expr = true, silent = true, desc = "LSP completion or keyword fallback" }
 )
 
--- <Tab>/<S-Tab>: cycle items if menu is open, else insert tabs normally
-vim.keymap.set("i", "<Tab>", function()
-  return vim.fn.pumvisible() == 1 and "<C-n>" or "<Tab>"
-end,
-  {expr = true, silent = true}
-)
-
-vim.keymap.set("i", "<S-Tab>", function()
-  return vim.fn.pumvisible() == 1 and "<C-p>" or "<S-Tab>"
-end,
-  {expr = true, silent = true}
-)
-
--- <CR>: confirm selection if menu is open, else newline
-vim.keymap.set("i", "<CR>", function()
-  return vim.fn.pumvisible() == 1 and "<C-y>" or "<CR>"
-end,
-  {expr = true, silent = true}
-)
-
--- <Esc>: close the menu if open, else normal escape
-vim.keymap.set("i", "<Esc>", function()
-  return vim.fn.pumvisible() == 1 and "<C-e><Esc>" or "<Esc>"
-end,
-  {expr = true, silent = true}
-)
+vim.keymap.set("n", "<F5>", ":NERDTreeToggle<CR>", { noremap = true, silent = true })

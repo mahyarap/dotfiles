@@ -24,3 +24,21 @@ vim.lsp.enable({
   "jdtls",
   "zls",
 })
+
+-- Turn on native LSP completion when a server attaches
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(args)
+    local id = args.data.client_id
+    if vim.lsp.get_client_by_id(id) then
+      vim.lsp.completion.enable(true, id, args.buf, { autotrigger = false })
+    end
+  end,
+})
+
+-- vim.api.nvim_create_autocmd("LspAttach", {
+--   callback = function(args)
+--     vim.defer_fn(function()
+--       vim.lsp.semantic_tokens.force_refresh(args.buf)
+--     end, 100)
+--   end,
+-- })

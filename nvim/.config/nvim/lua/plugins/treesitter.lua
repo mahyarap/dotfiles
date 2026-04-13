@@ -1,7 +1,8 @@
-require("nvim-treesitter.configs").setup({
-  ensure_installed = {
-    "python",
-    "go",
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = {
+    "zig",
   },
-  indent = { enable = true },
+  callback = function(ev)
+    pcall(vim.treesitter.start, ev.buf)
+  end,
 })
