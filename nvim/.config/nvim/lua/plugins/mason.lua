@@ -2,19 +2,21 @@ require("mason").setup()
 local mason_registry = require("mason-registry")
 
 local tools = {
-  "clangd",
-  "pyright",
-  "gopls",
-  "shellcheck",
-  "jdtls",
-  "zls",
-  "ruff",
-  "luacheck",
+  { name = "clangd" },
+  { name = "pyright" },
+  { name = "gopls" },
+  { name = "shellcheck" },
+  { name = "jdtls" },
+  { name = "zls", version = "0.15.1" },
+  { name = "ruff" },
+  { name = "luacheck" },
 }
 
 for _, tool in ipairs(tools) do
-  local package = mason_registry.get_package(tool)
-  if not package:is_installed() then
-    package:install()
+  local pkg = mason_registry.get_package(tool.name)
+  if not pkg:is_installed() then
+    pkg:install({
+      version = tool.version
+    })
   end
 end
