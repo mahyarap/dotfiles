@@ -1,5 +1,9 @@
 configuration {
     modi: "drun";
-    matching: "normal";
+    matching: "fuzzy";
+    tokenize: true;
+    sorting-method: "fzf";
+    case-sensitive: false;
+    sort: true;
     dpi: 1;
 }
