@@ -1,0 +1,5 @@
+configuration {
+    modi: "drun";
+    matching: "normal";
+    dpi: 1;
+}
