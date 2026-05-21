@@ -23,6 +23,7 @@ vim.lsp.enable({
   "gopls",
   "jdtls",
   "zls",
+  "rust_analyzer",
 })
 
 -- Turn on native LSP completion when a server attaches

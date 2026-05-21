@@ -10,6 +10,7 @@ local tools = {
   { name = "zls", version = "0.15.1" },
   { name = "ruff" },
   { name = "luacheck" },
+  { name = "rust-analyzer" },
 }
 
 for _, tool in ipairs(tools) do
