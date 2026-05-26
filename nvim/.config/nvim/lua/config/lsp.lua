@@ -1,20 +1,28 @@
-vim.lsp.config.clangd = {
-  cmd = {
-    "clangd",
-    "--background-index",
-    "--pch-storage=memory",
-    "--clang-tidy",
-    "--query-driver=/home/mahyar/.espressif/tools/xtensa-esp-elf/esp-14.2.0_20241119/xtensa-esp-elf/bin/xtensa-esp32s3-elf-gcc",
-    -- "--log=verbose",
-  },
+local clangd_cmd = {
+  "clangd",
+  "--background-index",
+  "--pch-storage=memory",
+  "--clang-tidy",
+  -- "--log=verbose",
 }
 
+local esp32s3_gcc = vim.fn.expand("~/.espressif/tools/xtensa-esp-elf/esp-14.2.0_20241119/xtensa-esp-elf/bin/xtensa-esp32s3-elf-gcc")
+if vim.fn.executable(esp32s3_gcc) == 1 then
+  table.insert(clangd_cmd, "--query-driver=" .. esp32s3_gcc)
+end
+
+vim.lsp.config.clangd = {
+  cmd = clangd_cmd,
+}
+
+local jdtls_cmd = { "jdtls" }
+local java_executable = vim.fn.expand("~/.sdkman/candidates/java/21.0.6-amzn/bin/java")
+if vim.fn.executable(java_executable) == 1 then
+  vim.list_extend(jdtls_cmd, { "--java-executable", java_executable })
+end
+
 vim.lsp.config.jdtls = {
-  cmd = {
-    "jdtls",
-    "--java-executable",
-    vim.fn.expand("~/.sdkman/candidates/java/21.0.6-amzn/bin/java")
-  },
+  cmd = jdtls_cmd,
 }
 
 vim.lsp.enable({

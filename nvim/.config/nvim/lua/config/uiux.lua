@@ -65,34 +65,60 @@ vim.opt.listchars = "eol:$"
 
 vim.opt.autoread = true
 
-local function auto_save_win_view()
-    if vim.w.SavedBufView == nil then
-        vim.w.SavedBufView = {}
-    end
-    vim.w.SavedBufView[vim.fn.bufnr("%")] = vim.fn.winsaveview()
+local views = {}
+
+local function key(win, buf)
+  return tostring(win) .. ":" .. tostring(buf)
 end
 
-local function auto_restore_win_view()
-    local buf = vim.fn.bufnr("%")
-    if vim.w.SavedBufView and vim.w.SavedBufView[buf] then
-        local v = vim.fn.winsaveview()
-        local at_start_of_file = v.lnum == 1 and v.col == 0
-        if at_start_of_file and not vim.o.diff then
-            vim.fn.winrestview(vim.w.SavedBufView[buf])
-        end
-        vim.w.SavedBufView[buf] = nil
-    end
-end
+local hooks = vim.api.nvim_create_augroup("hooks", { clear = true })
 
-vim.api.nvim_create_augroup("hooks", { clear = true })
-vim.api.nvim_create_autocmd("BufLeave", {
-    group = "hooks",
-    pattern = "*",
-    callback = auto_save_win_view,
+vim.api.nvim_create_autocmd({ "BufLeave", "WinLeave" }, {
+  group = hooks,
+  callback = function()
+    if vim.bo.buftype == "" then
+      views[key(vim.api.nvim_get_current_win(), vim.api.nvim_get_current_buf())] = vim.fn.winsaveview()
+    end
+  end,
 })
 
-vim.api.nvim_create_autocmd("BufEnter", {
-    group = "hooks",
-    pattern = "*",
-    callback = auto_restore_win_view,
+vim.api.nvim_create_autocmd({ "BufEnter", "WinEnter" }, {
+  group = hooks,
+  callback = function()
+    local win = vim.api.nvim_get_current_win()
+    local buf = vim.api.nvim_get_current_buf()
+    local k = key(win, buf)
+    if views[k] then
+      local view = views[k]
+      vim.schedule(function()
+        if vim.api.nvim_win_is_valid(win) and vim.api.nvim_win_get_buf(win) == buf then
+          vim.api.nvim_win_call(win, function()
+            vim.fn.winrestview(view)
+          end)
+        end
+      end)
+    end
+  end,
+})
+
+vim.api.nvim_create_autocmd("BufWipeout", {
+  group = hooks,
+  callback = function(args)
+    for k in pairs(views) do
+      if k:match(":" .. args.buf .. "$") then
+        views[k] = nil
+      end
+    end
+  end,
+})
+
+vim.api.nvim_create_autocmd("WinClosed", {
+  group = hooks,
+  callback = function(args)
+    for k in pairs(views) do
+      if k:match("^" .. args.match .. ":") then
+        views[k] = nil
+      end
+    end
+  end,
 })

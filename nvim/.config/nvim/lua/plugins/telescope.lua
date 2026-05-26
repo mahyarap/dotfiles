@@ -16,7 +16,10 @@ local function multi_open(prompt_bufnr)
     -- Open each selected file
     actions.close(prompt_bufnr)
     for _, entry in ipairs(selections) do
-      vim.cmd("edit " .. entry.path)
+      local path = entry.path or entry.filename or entry.value
+      if path then
+        vim.cmd("edit " .. vim.fn.fnameescape(path))
+      end
     end
   end
 end

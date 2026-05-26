@@ -13,11 +13,16 @@ local tools = {
   { name = "rust-analyzer" },
 }
 
-for _, tool in ipairs(tools) do
-  local pkg = mason_registry.get_package(tool.name)
-  if not pkg:is_installed() then
-    pkg:install({
-      version = tool.version
-    })
+vim.api.nvim_create_user_command("MasonBootstrap", function()
+  for _, tool in ipairs(tools) do
+    local ok, pkg = pcall(mason_registry.get_package, tool.name)
+    if not ok then
+      vim.notify("Mason package not found: " .. tool.name, vim.log.levels.WARN)
+    elseif not pkg:is_installed() then
+      pkg:install({
+        version = tool.version
+      })
+      vim.notify("Installing Mason package: " .. tool.name)
+    end
   end
-end
+end, { desc = "Install configured Mason tools" })
