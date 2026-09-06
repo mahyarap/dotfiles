@@ -278,7 +278,7 @@ default_mode "locked"
 // Choose the path to the default shell that zellij will use for opening new panes
 // Default: $SHELL
 // 
-// default_shell "fish"
+default_shell "fish"
  
 // Choose the path to override cwd that zellij will use for opening new panes
 // 
@@ -516,3 +516,6 @@ advanced_mouse_actions false
 // can be useful for removing wrappers around commands
 // Note: be sure to escape backslashes and similar characters properly
 // post_command_discovery_hook "echo $RESURRECT_COMMAND | sed <your_regex_here>"
+scroll_mode_sync false
+pane_frame_style "full"
+stacked_pane_list false
