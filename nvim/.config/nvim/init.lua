@@ -1,4 +1,4 @@
-require("config.paq")
+require("config.pack")
 require("config.uiux")
 require("config.mappings")
 require("config.formatting")

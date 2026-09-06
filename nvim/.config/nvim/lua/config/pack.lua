@@ -15,7 +15,7 @@ vim.pack.add {
   gh("mfussenegger/nvim-lint"),
   gh("nvim-treesitter/nvim-treesitter"),
   gh("nvim-treesitter/nvim-treesitter-context"),
-  gh("tpope/vim-rsi"),
   gh("stevearc/conform.nvim"),
   gh("preservim/nerdtree"),
+  gh("ryvnf/readline.vim"),
 }
