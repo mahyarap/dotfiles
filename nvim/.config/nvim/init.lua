@@ -1,7 +1,6 @@
 require("config.pack")
 require("config.uiux")
 require("config.mappings")
-require("config.formatting")
 require("config.lsp")
 require("config.misc")
 require("plugins.mason")
