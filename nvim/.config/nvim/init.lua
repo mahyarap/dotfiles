@@ -1,5 +1,6 @@
 require("config.pack")
 require("config.uiux")
+require("config.indentation")
 require("config.mappings")
 require("config.spell")
 require("config.lsp")
